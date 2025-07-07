@@ -39,7 +39,6 @@
   margin: 0;
 }
 
-
 .tabs .tabs-list button[aria-selected='true'] {
   border-bottom: 1px solid var(--background-color);
   background-color: var(--background-color);
@@ -54,5 +53,102 @@
 }
 
 .tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs.tabs16 {
+  background: #000;
+  padding: 0;
+}
+
+/* Tab Bar Row */
+.tabs.tabs16 .tabs-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #000;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+  align-items: flex-end;
+  gap: 0;
+}
+
+/* Tab Button */
+.tabs.tabs16 .tabs-list .tabs-tab {
+  flex: 1 1 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #000;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0 8px;
+  height: 32px;
+  min-width: 0;
+  position: relative;
+  cursor: pointer;
+  box-shadow: none;
+  z-index: 1;
+  border-bottom: none;
+}
+
+/* Tab Text */
+.tabs.tabs16 .tabs-list .tabs-tab p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6e6e6e;
+  text-align: center;
+  width: 100%;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  padding: 0;
+}
+
+/* ACTIVE TAB: underline only under the tab (not the block) */
+.tabs.tabs16 .tabs-list .tabs-tab[aria-selected="true"]::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 1px;
+  display: block;
+  content: "";
+}
+
+/* ACTIVE TAB: text color/weight */
+.tabs.tabs16 .tabs-list .tabs-tab[aria-selected="true"] p {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Remove unwanted button/focus/hover backgrounds from resets */
+.tabs.tabs16 .tabs-list .tabs-tab:focus,
+.tabs.tabs16 .tabs-list .tabs-tab:hover {
+  background: #000;
+  outline: none;
+  border: none;
+}
+
+/* Hide default panel border/padding/background */
+.tabs.tabs16 .tabs-panel {
+  border: none;
+  background: #000;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  min-height: 1px;
+}
+
+/* Hide inactive panels */
+.tabs.tabs16 .tabs-panel[aria-hidden='true'] {
   display: none;
 }
