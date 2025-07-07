@@ -67,12 +67,6 @@
       "source": "SITEMAPS",
       "targetPath": "/latest-trends-young-fashion",
       "id": "f75120b4c802db89d4360cdfd336761819180703"
-    },
-    {
-      "url": "https://wknd-trendsetters.webflow.io/style-guide",
-      "source": "SITEMAPS",
-      "targetPath": "/style-guide",
-      "id": "58023be5e536317d3c633e68ccd5b69f9bd546e5"
     }
   ],
   "crawlOptions": {
@@ -88,5 +82,13 @@
       "SITEMAPS"
     ]
   },
-  "extractionErrors": []
+  "extractionErrors": [],
+  "excludedUrls": [
+    {
+      "url": "https://wknd-trendsetters.webflow.io/style-guide",
+      "source": "SITEMAPS",
+      "targetPath": "/style-guide",
+      "id": "58023be5e536317d3c633e68ccd5b69f9bd546e5"
+    }
+  ]
 }
