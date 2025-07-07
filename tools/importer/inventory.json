@@ -41,12 +41,6 @@
           "xpath": "/html[1]/body[1]/div[1]"
         },
         {
-          "url": "https://wknd-trendsetters.webflow.io/style-guide",
-          "urlHash": "58023be5e536317d3c633e68ccd5b69f9bd546e5",
-          "uuid": "58023be5-00-6e70765a003047818ea5700b557b8d01b43078df",
-          "xpath": "/html[1]/body[1]/div[1]"
-        },
-        {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
           "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
           "uuid": "927dc70b-00-6e70765a003047818ea5700b557b8d01b43078df",
@@ -119,12 +113,6 @@
           "xpath": "/html[1]/body[1]/footer[1]"
         },
         {
-          "url": "https://wknd-trendsetters.webflow.io/style-guide",
-          "urlHash": "58023be5e536317d3c633e68ccd5b69f9bd546e5",
-          "uuid": "58023be5-01-6419c5482dba87d55497e10067ddb965e78fe885",
-          "xpath": "/html[1]/body[1]/div[2]"
-        },
-        {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
           "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
           "uuid": "927dc70b-08-a507e040135207256fc0c4fd07f12510b5a9e729",
@@ -166,40 +154,160 @@
       "key": "hero1",
       "instances": [
         {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
-          "urlHash": "f9857906773da60d7160b16f2db1e2eda0dc6fa1",
-          "uuid": "f9857906-02-c498d593a5bc97467d867eb87705c763456c87bd",
-          "xpath": "/html[1]/body[1]/section[1]"
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-04-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-05-763479c3261fc43016e8eafc05c8ea8587e61655",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-05-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-06-763479c3261fc43016e8eafc05c8ea8587e61655",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 2,
+      "source": "Hero",
+      "target": "Hero (hero2)",
+      "key": "hero2",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
+          "urlHash": "24d0372b35ead7342b87543fbbc0be5c45f29630",
+          "uuid": "24d0372b-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 3,
+      "source": "Hero",
+      "target": "Hero (hero3)",
+      "key": "hero3",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-12-2543d43dac63c32e3ccae4aae2045cbf1572ea04",
+          "xpath": "/html[1]/body[1]/section[5]"
         }
       ]
     },
     {
       "name": "Cards",
-      "cluster": 2,
+      "cluster": 4,
       "source": "Cards",
-      "target": "Cards (cards2)",
-      "key": "cards2",
+      "target": "Cards (cards4)",
+      "key": "cards4",
       "instances": [
         {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults",
-          "urlHash": "1ac9604369412593284c7cabedbdb868d4de24e1",
-          "uuid": "1ac96043-08-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-03-a27d6a564ded217577666251c62dd15fe27c1901",
+          "xpath": "/html[1]/body[1]/section[2]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 5,
+      "source": "Cards",
+      "target": "Cards (cards5)",
+      "key": "cards5",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
+          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
+          "uuid": "251cb4f5-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
           "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
         },
         {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
-          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
-          "uuid": "ea7eb16d-03-adda47d09d7763b69d96936602e835dec2004e55",
-          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[2]"
+          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
+          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
+          "uuid": "a50920c9-05-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 6,
+      "source": "Hero",
+      "target": "Hero (hero6)",
+      "key": "hero6",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 7,
+      "source": "Hero",
+      "target": "Hero (hero7)",
+      "key": "hero7",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-06-bcf58b63085bee4597101c756c702eb86af612c8",
+          "xpath": "/html[1]/body[1]/section[3]/div[2]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-07-bcf58b63085bee4597101c756c702eb86af612c8",
+          "xpath": "/html[1]/body[1]/section[3]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 8,
+      "source": "Columns",
+      "target": "Columns (columns8)",
+      "key": "columns8",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
         }
       ]
     },
     {
       "name": "header",
-      "cluster": 3,
+      "cluster": 9,
       "source": "Header",
-      "target": "Header (header3)",
-      "key": "header3",
+      "target": "Header",
+      "key": "header9",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -238,12 +346,6 @@
           "xpath": "/html[1]/body[1]/div[1]"
         },
         {
-          "url": "https://wknd-trendsetters.webflow.io/style-guide",
-          "urlHash": "58023be5e536317d3c633e68ccd5b69f9bd546e5",
-          "uuid": "58023be5-01-6419c5482dba87d55497e10067ddb965e78fe885",
-          "xpath": "/html[1]/body[1]/div[2]"
-        },
-        {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
           "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
           "uuid": "927dc70b-00-6e70765a003047818ea5700b557b8d01b43078df",
@@ -277,349 +379,10 @@
     },
     {
       "name": "Hero",
-      "cluster": 4,
-      "source": "Hero",
-      "target": "Hero (hero4)",
-      "key": "hero4",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-06-bcf58b63085bee4597101c756c702eb86af612c8",
-          "xpath": "/html[1]/body[1]/section[3]/div[2]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-07-bcf58b63085bee4597101c756c702eb86af612c8",
-          "xpath": "/html[1]/body[1]/section[3]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 5,
-      "source": "Cards",
-      "target": "Cards (cards5)",
-      "key": "cards5",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-03-a27d6a564ded217577666251c62dd15fe27c1901",
-          "xpath": "/html[1]/body[1]/section[2]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 6,
-      "source": "Hero",
-      "target": "Hero (hero6)",
-      "key": "hero6",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
-          "xpath": "/html[1]/body[1]/header[1]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 7,
-      "source": "Hero",
-      "target": "Hero (hero7)",
-      "key": "hero7",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-04-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-05-763479c3261fc43016e8eafc05c8ea8587e61655",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-05-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-06-763479c3261fc43016e8eafc05c8ea8587e61655",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 8,
-      "source": "Columns",
-      "target": "Columns (columns8)",
-      "key": "columns8",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
-          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
-          "uuid": "a50920c9-02-873b5b39c6b5d572aa5cc0b5054ab72ce2bd28e5",
-          "xpath": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "header",
-      "cluster": 9,
-      "source": "Header",
-      "target": "Header (header9)",
-      "key": "header9",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/style-guide",
-          "urlHash": "58023be5e536317d3c633e68ccd5b69f9bd546e5",
-          "uuid": "58023be5-00-6e70765a003047818ea5700b557b8d01b43078df",
-          "xpath": "/html[1]/body[1]/div[1]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
       "cluster": 10,
       "source": "Hero",
       "target": "Hero (hero10)",
       "key": "hero10",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-12-2543d43dac63c32e3ccae4aae2045cbf1572ea04",
-          "xpath": "/html[1]/body[1]/section[5]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 11,
-      "source": "Cards",
-      "target": "Cards (cards11)",
-      "key": "cards11",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
-          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
-          "uuid": "251cb4f5-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
-          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
-          "uuid": "a50920c9-05-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 12,
-      "source": "Hero",
-      "target": "Hero (hero12)",
-      "key": "hero12",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
-          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
-          "uuid": "927dc70b-02-c498d593a5bc97467d867eb87705c763456c87bd",
-          "xpath": "/html[1]/body[1]/section[1]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
-          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
-          "uuid": "a50920c9-03-c498d593a5bc97467d867eb87705c763456c87bd",
-          "xpath": "/html[1]/body[1]/section[1]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 13,
-      "source": "Columns",
-      "target": "Columns (columns13)",
-      "key": "columns13",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
-          "urlHash": "0075ae26aed0fbe118fcf6403913a4675f852a3c",
-          "uuid": "0075ae26-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults",
-          "urlHash": "1ac9604369412593284c7cabedbdb868d4de24e1",
-          "uuid": "1ac96043-10-eadf6a6abca85dfbd8029464354f763b41bb12a6",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 14,
-      "source": "Hero",
-      "target": "Hero (hero14)",
-      "key": "hero14",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-08-796e849cb17320ad9140c2a1b41bb8d247c7d309",
-          "xpath": "/html[1]/body[1]/section[4]"
-        },
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
-          "urlHash": "f9857906773da60d7160b16f2db1e2eda0dc6fa1",
-          "uuid": "f9857906-06-796e849cb17320ad9140c2a1b41bb8d247c7d309",
-          "xpath": "/html[1]/body[1]/section[4]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 15,
-      "source": "Hero",
-      "target": "Hero (hero15)",
-      "key": "hero15",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
-          "urlHash": "24d0372b35ead7342b87543fbbc0be5c45f29630",
-          "uuid": "24d0372b-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
-          "xpath": "/html[1]/body[1]/header[1]"
-        }
-      ]
-    },
-    {
-      "name": "Tabs",
-      "cluster": 16,
-      "source": "Tabs",
-      "target": "Tabs",
-      "key": "tabs16",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-08-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 17,
-      "source": "Cards",
-      "target": "Cards (cards17)",
-      "key": "cards17",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
-          "urlHash": "24d0372b35ead7342b87543fbbc0be5c45f29630",
-          "uuid": "24d0372b-05-9ce9fa8be76da29101f567649a5fe06e75efa88b",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Carousel",
-      "cluster": 18,
-      "source": "Carousel",
-      "target": "Carousel (carousel18)",
-      "key": "carousel18",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
-          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
-          "uuid": "251cb4f5-05-f1fc93ab3e21904951fd9ec2cb1dd9218e350e1d",
-          "xpath": "/html[1]/body[1]/section[3]"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "cluster": 19,
-      "source": "Accordion",
-      "target": "Accordion (accordion19)",
-      "key": "accordion19",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-11-d6e8337d5ab20159acc6ca0a1ea736639b279659",
-          "xpath": "/html[1]/body[1]/section[4]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 20,
-      "source": "Columns",
-      "target": "Columns (columns20)",
-      "key": "columns20",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/faq",
-          "urlHash": "39ea343bee8fc7d4edba337f60c0d7510c9c46cd",
-          "uuid": "39ea343b-03-a27d6a564ded217577666251c62dd15fe27c1901",
-          "xpath": "/html[1]/body[1]/section[2]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 21,
-      "source": "Cards",
-      "target": "Cards (cards21)",
-      "key": "cards21",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-04-69306c16bac5563398ce327c71e7f1e9493b6265",
-          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[1]"
-        }
-      ]
-    },
-    {
-      "name": "Accordion",
-      "cluster": 22,
-      "source": "Accordion",
-      "target": "Accordion (accordion22)",
-      "key": "accordion22",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/faq",
-          "urlHash": "39ea343bee8fc7d4edba337f60c0d7510c9c46cd",
-          "uuid": "39ea343b-02-adda47d09d7763b69d96936602e835dec2004e55",
-          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 23,
-      "source": "Hero",
-      "target": "Hero (hero23)",
-      "key": "hero23",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -630,26 +393,11 @@
       ]
     },
     {
-      "name": "Hero",
-      "cluster": 24,
-      "source": "Hero",
-      "target": "Hero (hero24)",
-      "key": "hero24",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-09-763479c3261fc43016e8eafc05c8ea8587e61655",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
       "name": "Columns",
-      "cluster": 25,
+      "cluster": 11,
       "source": "Columns",
-      "target": "Columns (columns25)",
-      "key": "columns25",
+      "target": "Columns (columns11)",
+      "key": "columns11",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -720,11 +468,209 @@
       ]
     },
     {
+      "name": "Columns",
+      "cluster": 12,
+      "source": "Columns",
+      "target": "Columns (columns12)",
+      "key": "columns12",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
+          "urlHash": "0075ae26aed0fbe118fcf6403913a4675f852a3c",
+          "uuid": "0075ae26-04-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults",
+          "urlHash": "1ac9604369412593284c7cabedbdb868d4de24e1",
+          "uuid": "1ac96043-10-eadf6a6abca85dfbd8029464354f763b41bb12a6",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 13,
+      "source": "Hero",
+      "target": "Hero (hero13)",
+      "key": "hero13",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
+          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
+          "uuid": "f75120b4-08-796e849cb17320ad9140c2a1b41bb8d247c7d309",
+          "xpath": "/html[1]/body[1]/section[4]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
+          "urlHash": "f9857906773da60d7160b16f2db1e2eda0dc6fa1",
+          "uuid": "f9857906-06-796e849cb17320ad9140c2a1b41bb8d247c7d309",
+          "xpath": "/html[1]/body[1]/section[4]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 14,
+      "source": "Hero",
+      "target": "Hero (hero14)",
+      "key": "hero14",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
+          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
+          "uuid": "ea7eb16d-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 15,
+      "source": "Cards",
+      "target": "Cards (cards15)",
+      "key": "cards15",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults",
+          "urlHash": "1ac9604369412593284c7cabedbdb868d4de24e1",
+          "uuid": "1ac96043-08-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
+          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
+          "uuid": "ea7eb16d-03-adda47d09d7763b69d96936602e835dec2004e55",
+          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 16,
+      "source": "Columns",
+      "target": "Columns (columns16)",
+      "key": "columns16",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
+          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
+          "uuid": "251cb4f5-02-c498d593a5bc97467d867eb87705c763456c87bd",
+          "xpath": "/html[1]/body[1]/section[1]"
+        }
+      ]
+    },
+    {
       "name": "Carousel",
-      "cluster": 26,
+      "cluster": 17,
       "source": "Carousel",
-      "target": "Carousel (carousel26)",
-      "key": "carousel26",
+      "target": "Carousel (carousel17)",
+      "key": "carousel17",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
+          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
+          "uuid": "251cb4f5-05-f1fc93ab3e21904951fd9ec2cb1dd9218e350e1d",
+          "xpath": "/html[1]/body[1]/section[3]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 18,
+      "source": "Accordion",
+      "target": "Accordion (accordion18)",
+      "key": "accordion18",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-11-d6e8337d5ab20159acc6ca0a1ea736639b279659",
+          "xpath": "/html[1]/body[1]/section[4]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 19,
+      "source": "Columns",
+      "target": "Columns (columns19)",
+      "key": "columns19",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/faq",
+          "urlHash": "39ea343bee8fc7d4edba337f60c0d7510c9c46cd",
+          "uuid": "39ea343b-03-a27d6a564ded217577666251c62dd15fe27c1901",
+          "xpath": "/html[1]/body[1]/section[2]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 20,
+      "source": "Cards",
+      "target": "Cards (cards20)",
+      "key": "cards20",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-04-69306c16bac5563398ce327c71e7f1e9493b6265",
+          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 21,
+      "source": "Accordion",
+      "target": "Accordion (accordion21)",
+      "key": "accordion21",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/faq",
+          "urlHash": "39ea343bee8fc7d4edba337f60c0d7510c9c46cd",
+          "uuid": "39ea343b-02-adda47d09d7763b69d96936602e835dec2004e55",
+          "xpath": "/html[1]/body[1]/section[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 22,
+      "source": "Cards",
+      "target": "Cards (cards22)",
+      "key": "cards22",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
+          "urlHash": "24d0372b35ead7342b87543fbbc0be5c45f29630",
+          "uuid": "24d0372b-05-9ce9fa8be76da29101f567649a5fe06e75efa88b",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 23,
+      "source": "Hero",
+      "target": "Hero (hero23)",
+      "key": "hero23",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-09-763479c3261fc43016e8eafc05c8ea8587e61655",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Carousel",
+      "cluster": 24,
+      "source": "Carousel",
+      "target": "Carousel (carousel24)",
+      "key": "carousel24",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults",
@@ -735,11 +681,32 @@
       ]
     },
     {
+      "name": "Hero",
+      "cluster": 25,
+      "source": "Hero",
+      "target": "Hero (hero25)",
+      "key": "hero25",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
+          "urlHash": "927dc70b8d0c780767a731f2bd6caece006c8e29",
+          "uuid": "927dc70b-02-c498d593a5bc97467d867eb87705c763456c87bd",
+          "xpath": "/html[1]/body[1]/section[1]"
+        },
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
+          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
+          "uuid": "a50920c9-03-c498d593a5bc97467d867eb87705c763456c87bd",
+          "xpath": "/html[1]/body[1]/section[1]"
+        }
+      ]
+    },
+    {
       "name": "Cards",
-      "cluster": 27,
+      "cluster": 26,
       "source": "Cards",
-      "target": "Cards (cards27)",
-      "key": "cards27",
+      "target": "Cards (cards26)",
+      "key": "cards26",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
@@ -756,17 +723,32 @@
       ]
     },
     {
-      "name": "Columns",
-      "cluster": 28,
-      "source": "Columns",
-      "target": "Columns (columns28)",
-      "key": "columns28",
+      "name": "Hero",
+      "cluster": 27,
+      "source": "Hero",
+      "target": "Hero (hero27)",
+      "key": "hero27",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
           "urlHash": "24d0372b35ead7342b87543fbbc0be5c45f29630",
           "uuid": "24d0372b-08-796e849cb17320ad9140c2a1b41bb8d247c7d309",
           "xpath": "/html[1]/body[1]/section[4]"
+        }
+      ]
+    },
+    {
+      "name": "Tabs",
+      "cluster": 28,
+      "source": "Tabs",
+      "target": "Tabs",
+      "key": "tabs28",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-08-28a9b8a4613e4ebb7b85814fd3998dfa3ff3ea64",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[1]"
         }
       ]
     },
@@ -786,26 +768,11 @@
       ]
     },
     {
-      "name": "Hero",
-      "cluster": 30,
-      "source": "Hero",
-      "target": "Hero (hero30)",
-      "key": "hero30",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
-          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
-          "uuid": "ea7eb16d-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
-          "xpath": "/html[1]/body[1]/header[1]"
-        }
-      ]
-    },
-    {
       "name": "Columns",
-      "cluster": 31,
+      "cluster": 30,
       "source": "Columns",
-      "target": "Columns (columns31)",
-      "key": "columns31",
+      "target": "Columns (columns30)",
+      "key": "columns30",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/",
@@ -817,10 +784,10 @@
     },
     {
       "name": "Hero",
-      "cluster": 32,
+      "cluster": 31,
       "source": "Hero",
-      "target": "Hero (hero32)",
-      "key": "hero32",
+      "target": "Hero (hero31)",
+      "key": "hero31",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
@@ -831,17 +798,32 @@
       ]
     },
     {
-      "name": "Cards",
-      "cluster": 33,
-      "source": "Cards",
-      "target": "Cards (cards33)",
-      "key": "cards33",
+      "name": "Columns",
+      "cluster": 32,
+      "source": "Columns",
+      "target": "Columns (columns32)",
+      "key": "columns32",
       "instances": [
         {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
-          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
-          "uuid": "ea7eb16d-05-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
-          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+          "url": "https://wknd-trendsetters.webflow.io/blog/latest-trends-young-casual-fashion",
+          "urlHash": "a50920c91a2d15e1fe29a2ac05b71e5aad8f06fa",
+          "uuid": "a50920c9-02-873b5b39c6b5d572aa5cc0b5054ab72ce2bd28e5",
+          "xpath": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 33,
+      "source": "Hero",
+      "target": "Hero (hero33)",
+      "key": "hero33",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
+          "urlHash": "f9857906773da60d7160b16f2db1e2eda0dc6fa1",
+          "uuid": "f9857906-02-c498d593a5bc97467d867eb87705c763456c87bd",
+          "xpath": "/html[1]/body[1]/section[1]"
         }
       ]
     },
@@ -853,10 +835,10 @@
       "key": "cards34",
       "instances": [
         {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
-          "urlHash": "0075ae26aed0fbe118fcf6403913a4675f852a3c",
-          "uuid": "0075ae26-06-eadf6a6abca85dfbd8029464354f763b41bb12a6",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[2]"
+          "url": "https://wknd-trendsetters.webflow.io/",
+          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
+          "uuid": "0c5f4f7c-07-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
         }
       ]
     },
@@ -868,19 +850,34 @@
       "key": "cards35",
       "instances": [
         {
-          "url": "https://wknd-trendsetters.webflow.io/",
-          "urlHash": "0c5f4f7ce8864d7af03165aec812a12465ec27e7",
-          "uuid": "0c5f4f7c-07-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+          "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
+          "urlHash": "ea7eb16d67cfbaaef306533ddfe915a8f4730012",
+          "uuid": "ea7eb16d-05-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
           "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
         }
       ]
     },
     {
-      "name": "Hero",
+      "name": "Cards",
       "cluster": 36,
+      "source": "Cards",
+      "target": "Cards (cards36)",
+      "key": "cards36",
+      "instances": [
+        {
+          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
+          "urlHash": "0075ae26aed0fbe118fcf6403913a4675f852a3c",
+          "uuid": "0075ae26-06-eadf6a6abca85dfbd8029464354f763b41bb12a6",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 37,
       "source": "Hero",
-      "target": "Hero (hero36)",
-      "key": "hero36",
+      "target": "Hero (hero37)",
+      "key": "hero37",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
@@ -892,10 +889,10 @@
     },
     {
       "name": "Carousel",
-      "cluster": 37,
+      "cluster": 38,
       "source": "Carousel",
-      "target": "Carousel (carousel37)",
-      "key": "carousel37",
+      "target": "Carousel (carousel38)",
+      "key": "carousel38",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
@@ -907,10 +904,10 @@
     },
     {
       "name": "Cards",
-      "cluster": 38,
+      "cluster": 39,
       "source": "Cards",
-      "target": "Cards (cards38)",
-      "key": "cards38",
+      "target": "Cards (cards39)",
+      "key": "cards39",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
@@ -922,10 +919,10 @@
     },
     {
       "name": "Columns",
-      "cluster": 39,
+      "cluster": 40,
       "source": "Columns",
-      "target": "Columns (columns39)",
-      "key": "columns39",
+      "target": "Columns (columns40)",
+      "key": "columns40",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
@@ -937,45 +934,15 @@
     },
     {
       "name": "Hero",
-      "cluster": 40,
+      "cluster": 41,
       "source": "Hero",
-      "target": "Hero (hero40)",
-      "key": "hero40",
+      "target": "Hero (hero41)",
+      "key": "hero41",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
           "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
           "uuid": "251cb4f5-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
-          "xpath": "/html[1]/body[1]/header[1]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 41,
-      "source": "Columns",
-      "target": "Columns (columns41)",
-      "key": "columns41",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
-          "urlHash": "251cb4f5e0d8ca921a8de8c69ca1e62c463c251c",
-          "uuid": "251cb4f5-02-c498d593a5bc97467d867eb87705c763456c87bd",
-          "xpath": "/html[1]/body[1]/section[1]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 42,
-      "source": "Columns",
-      "target": "Columns (columns42)",
-      "key": "columns42",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
-          "urlHash": "f75120b4c802db89d4360cdfd336761819180703",
-          "uuid": "f75120b4-01-b2c8ec8cc7206114599cd049698cc67e0e048d63",
           "xpath": "/html[1]/body[1]/header[1]"
         }
       ]
