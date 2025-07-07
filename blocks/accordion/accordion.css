@@ -1,3 +1,4 @@
+
 .accordion details {
   border: 1px solid #dadada;
 }
@@ -58,4 +59,97 @@
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
+}
+
+.accordion.accordion19 {
+  background: #FAFAF7;
+  border-radius: 0;
+  padding: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.accordion.accordion19 > details {
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  margin: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.accordion.accordion19 > details:last-child {
+  border-bottom: none;
+}
+
+.accordion.accordion19 > details > summary {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 18px;
+  padding-right: 38px;
+  min-height: 50px;
+  font-family: var(--body-font-family, sans-serif);
+  font-size: 14px;
+  color: #33332D;
+  font-weight: 500;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.accordion.accordion19 > details > summary p {
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  font-weight: inherit;
+  line-height: 1.22;
+  align-self: center;
+}
+
+.accordion.accordion19 > details > summary::after {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: #33332D;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-size: contain;
+  mask-position: center;
+  mask-position: center;
+  content: "";
+  pointer-events: none;
+  transition: transform 0.2s;
+}
+
+.accordion.accordion19 > details[open] > summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion.accordion19 > details > summary:hover,
+.accordion.accordion19 > details > summary:focus,
+.accordion.accordion19 > details[open] > summary {
+  background: transparent;
+}
+
+.accordion.accordion19 > details > .accordion-item-body {
+  padding: 11px 18px;
+  font-family: var(--body-font-family, sans-serif);
+  font-size: 14px;
+  color: #33332D;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
 }
