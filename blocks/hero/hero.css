@@ -48,6 +48,81 @@
   }
 }
 
+.hero.hero4.block.no-image .button-container .button {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 8px 32px;
+  font-family: var(--body-font-family), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  background: #fff;
+  color: #000;
+  border: 1.5px solid #000;
+  border-radius: 999px;
+  line-height: 1.25;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  cursor: pointer;
+}
+
+.hero.hero6 .button-container .button {
+  display: inline-block;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 24px;
+  border: none;
+  background: #fff;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  margin: 0;
+  min-width: 0;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hero.hero6 .button-container .button + .button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.hero-container > .hero-wrapper > .block.hero.hero6 .button {
+  display: inline-block;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 24px;
+  border: none;
+  background: #fff;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  margin: 0;
+  min-width: 0;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hero-container > .hero-wrapper > .block.hero.hero6 .button + .button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.hero.hero4.block.no-image .button-container .button:hover,
+.hero.hero4.block.no-image .button-container .button:focus {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
 .hero.hero6 > div:first-child {
   position: absolute;
   inset: 0;
@@ -99,32 +174,6 @@
   margin-top: 22px;
   margin-bottom: 0;
   padding: 0;
-}
-
-.hero-container > .hero-wrapper > .block.hero.hero6 .button,
-.hero.hero6 .button-container .button {
-  display: inline-block;
-  padding: 14px 36px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 24px;
-  border: none;
-  background: #fff;
-  color: #222;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  margin: 0;
-  min-width: 0;
-  box-shadow: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.hero-container > .hero-wrapper > .block.hero.hero6 .button + .button,
-.hero.hero6 .button-container .button + .button {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
 }
 
 .hero.hero4.block.no-image p {
@@ -179,33 +228,6 @@
   margin: 0;
 }
 
-.hero.hero4.block.no-image .button-container .button {
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 8px 32px;
-  font-family: var(--body-font-family), Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  background: #fff;
-  color: #000;
-  border: 1.5px solid #000;
-  border-radius: 999px;
-  line-height: 1.25;
-  margin: 0;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: none;
-  transition: background 0.18s, color 0.18s, border 0.18s;
-  cursor: pointer;
-}
-
-.hero.hero4.block.no-image .button-container .button:hover,
-.hero.hero4.block.no-image .button-container .button:focus {
-  background: #000;
-  color: #fff;
-  border-color: #000;
-}
-
 .hero.hero4.block.no-image h2 {
   font-family: var(--heading-font-family), Arial, sans-serif;
   font-size: 44px;
@@ -219,18 +241,6 @@
   max-width: 100%;
   /* Prevent excessive stretching */
   white-space: pre-line;
-}
-
-.hero.hero1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 60px;
-  padding: 80px 0;
-  min-height: 420px;
-  background: var(--background-color);
-  box-sizing: border-box;
 }
 
 .hero.hero1 > div:first-child {
@@ -464,4 +474,63 @@
   letter-spacing: 0.01em;
   text-align: left;
   overflow-wrap: break-word;
+}
+
+/* ========== GENERATED CSS ========== */
+
+.hero.hero7 {
+  background: #f5f6f3;
+  width: 100%;
+  min-height: 120px;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Hide possible image container */
+.hero.hero7 > div:first-child {
+  display: none;
+}
+
+/* Use block layout for maximum compatibility and to prevent flex collapse */
+.hero.hero7 > div:last-child {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Style the inner div to ensure text is centered and visible */
+.hero.hero7 > div:last-child > div {
+  margin: 32px auto 0;
+  text-align: center;
+  max-width: 900px;
+  min-height: 1em;
+  color: #1a1a1a;
+  font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: block;
+}
+
+/* Ensure any text nodes or inline elements inherit style and stay visible */
+.hero.hero7 > div:last-child > div *,
+.hero.hero7 > div:last-child > div {
+  color: #1a1a1a;
+  font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
