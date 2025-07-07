@@ -1,3 +1,4 @@
+
 /* ===================== HERO BLOCKS COMMON ===================== */
 
 .hero-container .hero-wrapper {
@@ -111,9 +112,8 @@
   background: none;
 }
 
-/* LEFT COLUMN: text group */
 .hero.hero12 h2 {
-  font-family: Syncopate, Syncopate Fallback, Arial, sans-serif;
+  font-family: Syncopate, "Syncopate Fallback", Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -224,7 +224,6 @@
   }
 }
 
-/* === MERGED HERO SELECTOR === */
 .hero {
   position: relative;
   width: 100vw;
@@ -241,7 +240,6 @@
   margin-right: auto;
 }
 
-/* Overlay for readability */
 .hero::after {
   display: block;
   position: absolute;
@@ -275,7 +273,6 @@
   background: none;
 }
 
-/* Move text block to a visually high position, but allow for natural heading width */
 .hero > div:nth-child(2) {
   position: absolute;
   top: 0;
@@ -302,7 +299,6 @@
   box-sizing: border-box;
 }
 
-/* Heading: bolder font size, more natural line breaks, less letter spacing */
 .hero h1 {
   color: #fff;
   font-family: "Century Gothic", Futura, Syncopate, Arial, sans-serif;
@@ -319,7 +315,6 @@
   overflow-wrap: break-word;
 }
 
-/* Responsive tweaks for smaller screens */
 @media (width <= 900px) {
   .hero {
     min-height: 44vh;
@@ -341,7 +336,6 @@
   }
 }
 
-/* === HERO 1 BLOCK === */
 .hero.hero1 > div:first-child {
   flex: 0 0 auto;
   display: flex !important;
@@ -491,7 +485,6 @@
   }
 }
 
-/* === HERO 4 BLOCK === */
 .hero.hero4 {
   position: relative;
   padding: 40px 24px;
@@ -620,7 +613,6 @@
   }
 }
 
-/* === HERO 6 BLOCK === */
 .hero.hero6 {
   position: relative;
   display: flex;
@@ -775,7 +767,6 @@
   }
 }
 
-/* === HERO 7 BLOCK === */
 .hero.hero7 {
   background: #f5f6f3;
   width: 100%;
@@ -829,7 +820,6 @@
   box-shadow: none;
 }
 
-/* === HERO 10 BLOCK === */
 .hero.hero10 {
   display: flex;
   flex-direction: row;
@@ -950,7 +940,6 @@
   }
 }
 
-/* === GENERATED CSS === */
 .hero.hero24.block {
   background: #000;
   border-radius: 20px;
@@ -963,7 +952,6 @@
   box-sizing: border-box;
 }
 
-/* Headline styling */
 .hero.hero24.block > div:last-child > div > h3 {
   font-family: Orbitron, Quicksand, Montserrat, Arial, sans-serif;
   color: #fff;
@@ -977,7 +965,6 @@
   padding: 0 28px;
 }
 
-/* Image container and image styling */
 .hero.hero24.block > div:first-child {
   width: 100%;
   display: flex;
@@ -1016,7 +1003,6 @@
   box-sizing: border-box;
 }
 
-/* Responsive adjustments */
 @media (width <= 900px) {
   .hero.hero24.block {
     max-width: 99vw;
@@ -1032,5 +1018,199 @@
     font-size: 1.3rem;
     padding: 0 4vw;
     margin-bottom: 36px;
+  }
+}
+
+/* === MERGED SELECTOR: .hero.hero29 === */
+.hero.hero29.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #FAFAF7;
+  border-radius: 0;
+  padding: 72px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 64px;
+  box-sizing: border-box;
+  min-height: 600px;
+}
+
+.hero.hero29.block > div:first-child {
+  flex: 1 1 50%;
+  order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  height: 100%;
+}
+
+.hero.hero29.block > div:first-child > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.hero.hero29.block > div:first-child picture {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero.hero29.block > div:first-child img {
+  width: 100%;
+  max-width: 420px;
+  min-width: 250px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+  background: #eaeaea;
+  box-shadow: 0 2px 24px 0 rgb(60 48 48 / 6%);
+  margin-left: auto;
+}
+
+.hero.hero29.block > div:last-child {
+  flex: 1 1 50%;
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  height: 100%;
+}
+
+.hero.hero29.block > div:last-child > div {
+  width: 100%;
+  max-width: 520px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4rem;
+  justify-content: center;
+  min-height: 420px;
+}
+
+.hero.hero29.block > div:last-child > div > p:first-child {
+  font-family: Inter, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #787878;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  margin: 0 0 1.2rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.hero.hero29.block > div:last-child > div > h2 {
+  font-family: Montserrat, Inter, Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #181818;
+  margin: 0 0 1.1rem;
+  line-height: 1.04;
+  text-align: left;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.hero.hero29.block > div:last-child > div > p:nth-of-type(2) {
+  font-size: 18px;
+  color: #181818;
+  font-family: Inter, Arial, sans-serif;
+  margin: 0 0 1.1rem;
+  line-height: 1.55;
+  max-width: 40ch;
+}
+
+.hero.hero29.block > div:last-child > div > p:nth-of-type(3) {
+  font-size: 12px;
+  color: #787878;
+  margin: 0 0 0.6rem;
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.4;
+  max-width: 44ch;
+}
+
+.hero.hero29.block > div:last-child > div > p.button-container {
+  margin: 0.6rem 0 0;
+}
+
+.hero-container > .hero-wrapper > .hero.hero29.block .button {
+  background: #fff;
+  color: #181818;
+  border: 1.5px solid #181818;
+  border-radius: 999px;
+  padding: 10px 28px;
+  font-size: 16px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: left;
+  min-width: 0;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  transition: background 0.15s, color 0.15s, border 0.15s;
+  display: inline-block;
+}
+
+.hero-container > .hero-wrapper > .hero.hero29.block .button:hover,
+.hero-container > .hero-wrapper > .hero.hero29.block .button:focus {
+  background: #181818;
+  color: #fff;
+  border-color: #181818;
+}
+
+@media (width <= 900px) {
+  .hero.hero29.block {
+    flex-direction: column;
+    gap: 32px;
+    padding: 28px 0;
+    min-height: unset;
+    max-width: 100vw;
+  }
+
+  .hero.hero29.block > div:first-child,
+  .hero.hero29.block > div:last-child {
+    order: unset;
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .hero.hero29.block > div:first-child > div {
+    justify-content: center;
+  }
+
+  .hero.hero29.block > div:first-child img {
+    max-width: 98vw;
+    margin: 0 auto;
+  }
+
+  .hero.hero29.block > div:last-child > div {
+    max-width: 98vw;
+    padding: 0 4vw;
+    gap: 1.1rem;
+    min-height: unset;
+  }
+
+  .hero.hero29.block > div:last-child > div > h2 {
+    font-size: 32px;
+  }
+
+  .hero.hero29.block > div:last-child > div > p:nth-of-type(2) {
+    font-size: 15px;
   }
 }
