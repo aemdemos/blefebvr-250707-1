@@ -61,6 +61,23 @@
   padding: 0;
 }
 
+.hero.hero12 > div:last-child {
+  order: 2;
+  justify-content: flex-start;
+  align-items: stretch;
+  background: #fff;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero.hero12 > div:last-child > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
 .hero.hero12 > div:first-child {
   order: 1;
   justify-content: flex-end;
@@ -79,23 +96,6 @@
   align-items: flex-start;
   justify-content: center;
   gap: 1.6rem;
-}
-
-.hero.hero12 > div:last-child {
-  order: 2;
-  justify-content: flex-start;
-  align-items: stretch;
-  background: #fff;
-  padding: 0;
-  overflow: hidden;
-}
-
-.hero.hero12 > div:last-child > div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
 }
 
 .hero.hero12 picture,
@@ -229,10 +229,26 @@
   position: relative;
   width: 100vw;
   min-height: 80vh;
-  padding: 0;
+  padding: 40px 32px;
   margin: 0;
   overflow: hidden;
   display: block;
+  background: #000;
+  border-radius: 20px;
+  max-width: 900px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Overlay for readability */
+.hero::after {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 18%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero > div:first-child {
@@ -257,16 +273,6 @@
   padding: 0;
   border: none;
   background: none;
-}
-
-/* Overlay for readability */
-.hero::after {
-  display: block;
-  position: absolute;
-  inset: 0;
-  background: rgb(0 0 0 / 18%);
-  z-index: 1;
-  pointer-events: none;
 }
 
 /* Move text block to a visually high position, but allow for natural heading width */
@@ -299,7 +305,7 @@
 /* Heading: bolder font size, more natural line breaks, less letter spacing */
 .hero h1 {
   color: #fff;
-  font-family: Century Gothic, Futura, Syncopate, Arial, sans-serif;
+  font-family: "Century Gothic", Futura, Syncopate, Arial, sans-serif;
   font-size: clamp(2.7rem, 7.2vw, 5.1rem);
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -317,6 +323,8 @@
 @media (width <= 900px) {
   .hero {
     min-height: 44vh;
+    max-width: 99vw;
+    padding: 48px 0 40px;
   }
 
   .hero > div:nth-child(2) > div {
@@ -507,14 +515,6 @@
   padding: 0;
 }
 
-.hero.hero4.block.no-image > div:first-child > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
 .hero.hero4.block.no-image > div:last-child {
   flex: 1 1 0;
   min-width: 0;
@@ -534,6 +534,14 @@
   justify-content: flex-start;
 }
 
+.hero.hero4.block.no-image > div:first-child > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .hero.hero4.block.no-image h2 {
   font-family: var(--heading-font-family), Arial, sans-serif;
   font-size: 44px;
@@ -545,7 +553,6 @@
   padding: 0;
   text-align: left;
   max-width: 100%;
-  /* Prevent excessive stretching */
   white-space: pre-line;
 }
 
@@ -796,7 +803,7 @@
   max-width: 900px;
   min-height: 1em;
   color: #1a1a1a;
-  font-family: Instrument Sans, Helvetica Neue, Arial, sans-serif;
+  font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
@@ -810,7 +817,7 @@
 .hero.hero7 > div:last-child > div *,
 .hero.hero7 > div:last-child > div {
   color: #1a1a1a;
-  font-family: Instrument Sans, Helvetica Neue, Arial, sans-serif;
+  font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -940,5 +947,90 @@
   .hero.hero10 p:last-child a {
     width: 100%;
     min-width: 0;
+  }
+}
+
+/* === GENERATED CSS === */
+.hero.hero24.block {
+  background: #000;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 96px auto 0;
+  padding: 96px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Headline styling */
+.hero.hero24.block > div:last-child > div > h3 {
+  font-family: Orbitron, Quicksand, Montserrat, Arial, sans-serif;
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 72px;
+  padding: 0 28px;
+}
+
+/* Image container and image styling */
+.hero.hero24.block > div:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.hero.hero24.block > div:first-child > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.hero.hero24.block picture {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.hero.hero24.block img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (width <= 900px) {
+  .hero.hero24.block {
+    max-width: 99vw;
+    padding: 48px 0 40px;
+  }
+
+  .hero.hero24.block picture,
+  .hero.hero24.block img {
+    max-width: 99vw;
+  }
+
+  .hero.hero24.block > div:last-child > div > h3 {
+    font-size: 1.3rem;
+    padding: 0 4vw;
+    margin-bottom: 36px;
   }
 }
