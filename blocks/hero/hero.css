@@ -45,3 +45,169 @@
     padding: 40px 32px;
   }
 }
+
+.hero.hero1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 60px;
+  padding: 80px 0;
+  min-height: 420px;
+  background: var(--background-color);
+  box-sizing: border-box;
+}
+
+/* Image column: force display and sizing */
+.hero.hero1 > div:first-child {
+  flex: 0 0 auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 370px;
+  max-width: 400px;
+  height: 270px;
+}
+
+.hero.hero1 > div:last-child {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 320px;
+}
+
+.hero.hero1 > div:first-child > div {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.hero1 picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 370px;
+  height: 270px;
+}
+
+.hero.hero1 img {
+  display: block;
+  width: 370px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #eee;
+}
+
+.hero.hero1 > div:last-child > div {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: normal;
+}
+
+/* Eyebrow */
+.hero.hero1 > div:last-child > div > p:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  color: #8b8b8b;
+  font-weight: 500;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+/* Badge (Trend Report) */
+.hero.hero1 > div:last-child > div > p:nth-child(2) {
+  display: inline-block;
+  background: #f2f2f2;
+  color: #232323;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 2px 12px;
+  margin: 0 0 20px 10px;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+/* Headline */
+.hero.hero1 h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #232323;
+  line-height: 1.1;
+  margin: 0 0 32px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Meta info: all on one line with dots and spacing */
+.hero.hero1 > div:last-child > div > p:nth-child(4),
+.hero.hero1 > div:last-child > div > p:nth-child(5),
+.hero.hero1 > div:last-child > div > p:nth-child(6),
+.hero.hero1 > div:last-child > div > p:nth-child(7),
+.hero.hero1 > div:last-child > div > p:nth-child(8) {
+  display: inline;
+  font-size: 16px;
+  color: #6f6f6f;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+  vertical-align: middle;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero.hero1 > div:last-child > div > p:nth-child(4) {
+  margin-right: 6px;
+}
+
+.hero.hero1 > div:last-child > div > p:nth-child(5),
+.hero.hero1 > div:last-child > div > p:nth-child(7) {
+  margin: 0 8px;
+}
+
+@media (width <= 900px) {
+  .hero.hero1 {
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px 0;
+    min-height: unset;
+  }
+
+  .hero.hero1 > div:last-child {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .hero.hero1 > div:first-child,
+  .hero.hero1 > div:first-child > div {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    height: auto;
+  }
+
+  .hero.hero1 picture,
+  .hero.hero1 img {
+    width: 100%;
+    max-width: 370px;
+    height: auto;
+  }
+
+  .hero.hero1 > div:last-child > div {
+    max-width: 100%;
+  }
+}
