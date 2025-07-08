@@ -1,28 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row for the block name, must match markdown example exactly
+  // Table header, matching the block/component name exactly
   const headerRow = ['Hero (hero7)'];
 
-  // 2. Background Image (the block expects exactly one image in the 2nd row)
-  // From the example markdown and screenshots: use only ONE image in the background row, the first of the images
-  let backgroundImg = null;
-  const firstImageDiv = element.querySelector(':scope > div');
-  if (firstImageDiv) {
-    backgroundImg = firstImageDiv.querySelector('img');
+  // Second row: background image (none in provided HTML)
+  const bgRow = [''];
+
+  // Third row: Heading, subheading, CTA
+  const grid = element.querySelector('.grid-layout');
+  if (!grid) return;
+  // Get all immediate children of grid layout
+  const children = Array.from(grid.children);
+
+  // The heading (usually h2)
+  const heading = children.find(el => /^H[1-6]$/.test(el.tagName));
+  // The div with paragraph and CTA button
+  const textCtaDiv = children.find(el => el !== heading);
+
+  // Gather content in correct order
+  const contentArr = [];
+  if (heading) contentArr.push(heading);
+  if (textCtaDiv) {
+    // Add all child elements of textCtaDiv (e.g. paragraph and CTA button)
+    contentArr.push(...Array.from(textCtaDiv.children));
   }
-  const backgroundRow = [backgroundImg ? backgroundImg : ''];
 
-  // 3. Third row: Headline/subheading/cta area - not present in provided HTML, so leave blank string
-  const contentRow = [''];
+  // Third row: everything in a single cell
+  const contentRow = [contentArr];
 
-  // 4. Create the table as per spec (all elements referenced directly, no cloning)
-  const cells = [
-    headerRow,
-    backgroundRow,
-    contentRow,
-  ];
+  // Assemble the table rows
+  const cells = [headerRow, bgRow, contentRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
 
-  // 5. Replace the original element with the new table
+  // Replace the original element with the new table
   element.replaceWith(table);
 }

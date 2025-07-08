@@ -1,38 +1,22 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: Get the grid layout
-  const grid = element.querySelector('.grid-layout, .w-layout-grid');
-  let image = null;
-  let contentDiv = null;
-
-  if (grid) {
-    const gridChildren = Array.from(grid.children);
-    // Find first img (image), and first non-img (content)
-    for (const child of gridChildren) {
-      if (!image && child.tagName === 'IMG') {
-        image = child;
-      } else if (!contentDiv && child.tagName !== 'IMG') {
-        contentDiv = child;
-      }
-    }
-  }
-
-  // Defensive: fallback if grid not found
-  if (!image) {
-    image = element.querySelector('img');
-  }
-  if (!contentDiv) {
-    // Try to find first div that looks like content
-    const candidates = Array.from(element.querySelectorAll('div'));
-    contentDiv = candidates.find(div => div.querySelector('h1, h2, .h2-heading, [class*="heading"], .eyebrow'));
-  }
-
-  // Build rows
+  // Table header exactly as specified
   const headerRow = ['Hero (hero1)'];
-  const imageRow = [image ? image : ''];
-  const contentRow = [contentDiv ? contentDiv : ''];
 
-  const rows = [headerRow, imageRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Get the first image inside the grid
+  const firstImgDiv = element.querySelector(':scope > div img');
+  const imgRow = [firstImgDiv ? firstImgDiv : ''];
+
+  // The HTML provided has no textual content or CTA in this block, so the text row is empty
+  const textRow = [''];
+
+  // Compose table cells as per the block spec: 1 column, 3 rows (header, bg img, text area)
+  const cells = [
+    headerRow,
+    imgRow,
+    textRow
+  ];
+
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(block);
 }

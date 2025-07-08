@@ -1,32 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the columns container (should be a grid-layout or similar direct child)
-  let grid = element.querySelector('.grid-layout, .grid, [class*="column"], [class*="columns"]');
-  if (!grid) grid = element;
+  // Find the main grid container which holds the columns
+  const grid = element.querySelector('.grid-layout');
+  if (!grid) return;
 
-  // Get all immediate column children (the columns)
+  // Get all direct children of the grid (intended to be columns)
   const columns = Array.from(grid.children);
 
-  // Header row: only one cell, as in the example
+  // Compose a cell for each column, ensuring all content is included
+  // For divs, include all of their child nodes (including text nodes and elements)
+  // For images and other elements, include the element itself
+  const columnsRow = columns.map(col => {
+    // If it's an Element with children, collect all non-empty nodes
+    if (col.children.length > 0 || col.childNodes.length > 1) {
+      // Gather all non-empty nodes (text or element)
+      return Array.from(col.childNodes).filter(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          return node.textContent.trim().length > 0;
+        }
+        return true;
+      });
+    } else {
+      // Single image or leaf node
+      return col;
+    }
+  });
+
+  // The header row must match exactly
   const headerRow = ['Columns (columns8)'];
 
-  // Content row: one cell for each column
-  const columnsRow = columns.map(col => col);
-
-  // Compose the table
-  const cells = [
+  // Create the block table
+  const table = WebImporter.DOMUtils.createTable([
     headerRow,
-    columnsRow
-  ];
+    columnsRow,
+  ], document);
 
-  // Create the table
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-  // Ensure the header cell spans all columns (for visual parity with example)
-  const th = block.querySelector('th');
-  if (th && columns.length > 1) {
-    th.setAttribute('colspan', columns.length);
-  }
-
-  // Replace the original element with the new block table
-  element.replaceWith(block);
+  // Replace the original element in the DOM
+  element.replaceWith(table);
 }
