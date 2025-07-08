@@ -1,56 +1,53 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Get the .grid-layout (it's inside the .container)
-  const grid = element.querySelector('.grid-layout');
-  if (!grid) return;
-  const gridChildren = Array.from(grid.children);
-
-  // Find the column with the heading and subheading
-  let contentCol = null;
-  let ctaCol = null;
-  // Heuristically: first div has h2, second has buttons
-  gridChildren.forEach(child => {
-    if (!contentCol && child.querySelector('h2')) {
-      contentCol = child;
-    }
-    if (!ctaCol && child.querySelector('a.button')) {
-      ctaCol = child;
-    }
-  });
-
-  // Gather content: heading, subheading, CTAs
-  const contentArr = [];
-  if (contentCol) {
-    const heading = contentCol.querySelector('h2');
-    if (heading) contentArr.push(heading);
-    const subheading = contentCol.querySelector('p');
-    if (subheading) contentArr.push(subheading);
-  }
-  if (ctaCol) {
-    // Add all CTAs (usually a elements)
-    const ctas = Array.from(ctaCol.querySelectorAll('a.button'));
-    if (ctas.length === 1) {
-      contentArr.push(ctas[0]);
-    } else if (ctas.length > 1) {
-      // Stack them vertically in a div for proper layout
-      const ctaDiv = document.createElement('div');
-      ctas.forEach((cta, idx) => {
-        ctaDiv.appendChild(cta);
-        if (idx < ctas.length - 1) {
-          ctaDiv.appendChild(document.createElement('br'));
-        }
-      });
-      contentArr.push(ctaDiv);
+  // Find the grid containing the montage of images for background
+  const grids = element.querySelectorAll('.grid-layout');
+  let imagesGrid = null;
+  for (const grid of grids) {
+    if (grid.querySelectorAll('img').length >= 6) {
+      imagesGrid = grid;
+      break;
     }
   }
 
-  // Build the table rows
-  const rows = [
+  // Collect the image elements (reference, don't clone)
+  let backgroundCell = '';
+  if (imagesGrid) {
+    // Wrap all images in a container div to preserve montage intent
+    const div = document.createElement('div');
+    div.style.display = 'grid';
+    div.style.gridTemplateColumns = 'repeat(3,1fr)';
+    div.style.gap = '0';
+    imagesGrid.querySelectorAll('img').forEach(img => div.appendChild(img));
+    backgroundCell = div;
+  }
+
+  // Find the text content container (heading, subheading, CTAs)
+  const contentContainer = element.querySelector('.container.small-container');
+  let contentCell = '';
+  if (contentContainer) {
+    // Collect heading, subheading, ctas (as references)
+    const contentParts = [];
+    const heading = contentContainer.querySelector('h1');
+    if (heading) contentParts.push(heading);
+    const subheading = contentContainer.querySelector('p');
+    if (subheading) contentParts.push(subheading);
+    const buttonGroup = contentContainer.querySelector('.button-group');
+    if (buttonGroup) {
+      // Add each button link
+      buttonGroup.querySelectorAll('a').forEach(a => contentParts.push(a));
+    }
+    if (contentParts.length > 0) {
+      contentCell = contentParts;
+    }
+  }
+
+  const cells = [
     ['Hero (hero10)'],
-    [''], // Second row is for background image, which is missing in this HTML
-    [contentArr]
+    [backgroundCell],
+    [contentCell],
   ];
 
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

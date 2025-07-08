@@ -1,44 +1,53 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row: must match the block name exactly
+  // 1. Table header must match exactly
   const headerRow = ['Hero (hero29)'];
 
-  // Find the grid-layout wrapper (contains the two main columns: content and image)
-  const grid = element.querySelector('.grid-layout');
-  if (!grid) return;
+  // 2. Find the grid container for layout (should have background image and content)
+  const grid = element.querySelector('.w-layout-grid');
 
-  // The image is the first <img> child in the grid (background image)
-  const img = grid.querySelector('img');
-  // If not found, leave cell empty
-  const imageRow = [img || ''];
+  // Defensive checks for presence
+  if (!grid) {
+    // No grid present; cannot build block as expected, do nothing
+    return;
+  }
 
-  // The text/cta column is the first (non-img) div in the grid
-  // Get all immediate children and find the div (not the img)
-  let contentDiv = null;
+  // 3. Get the image (background visual)
+  let imageEl = null;
+  let contentEl = null;
+  // The grid layout has two children: one text, one image
   const gridChildren = Array.from(grid.children);
   for (const child of gridChildren) {
-    if (child.tagName === 'DIV') {
-      contentDiv = child;
-      break;
+    if (child.tagName === 'IMG') {
+      imageEl = child;
+    } else if (!contentEl) {
+      contentEl = child;
     }
   }
-  // If not found, leave cell empty
-  let contentRow = [''];
-  if (contentDiv) {
-    // Collect ALL child elements (eyebrow, heading, paragraphs, cta)
-    // Retain order and existing references
-    const contentEls = Array.from(contentDiv.children);
-    contentRow = [contentEls];
-  }
 
-  // Compose the block table
+  // 4. Second row: the background image, or empty string if missing
+  const imageRow = [imageEl || ''];
+
+  // 5. Third row: all text/cta content as single cell
+  // We want to keep heading, subhead, paragraph, cta button, etc, together
+  let contentRowContent;
+  if (contentEl) {
+    // Reference all children in order, so all text and CTA is included
+    contentRowContent = Array.from(contentEl.children);
+  } else {
+    // Fallback: empty if not present
+    contentRowContent = '';
+  }
+  const contentRow = [contentRowContent];
+
+  // 6. Compose cells as instructed: 1 column, 3 rows
   const cells = [
     headerRow,
     imageRow,
     contentRow
   ];
 
-  // Create the table and replace the element
+  // 7. Create the block table and replace
   const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

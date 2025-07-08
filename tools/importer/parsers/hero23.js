@@ -1,39 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row with exact block name
-  const headerRow = ['Hero (hero23)'];
+  // Find the active tab pane; fallback to first if none marked active
+  let activePane = element.querySelector(':scope > .w--tab-active') || element.querySelector(':scope > div');
+  if (!activePane) return;
 
-  // 2. Background image(s) collage extraction (as a single cell with all <img> elements)
-  let imagesCell = '';
-  const scaleDiv = element.querySelector('.ix-hero-scale-3x-to-1x');
-  if (scaleDiv) {
-    const imageGrid = scaleDiv.querySelector('.grid-layout.desktop-3-column');
-    if (imageGrid) {
-      // Collect all images in order
-      const imgs = Array.from(imageGrid.querySelectorAll('img'));
-      if (imgs.length > 0) {
-        // Reference the existing img elements from the DOM
-        imagesCell = imgs;
-      }
+  // Get grid (content block) inside active pane, fallback to activePane
+  const grid = activePane.querySelector('.w-layout-grid') || activePane;
+
+  // Find the background image (first <img> direct child)
+  let img = null;
+  for (const child of grid.children) {
+    if (child.tagName === 'IMG') {
+      img = child;
+      break;
     }
   }
-  // If no images found, leave cell blank
 
-  // 3. Content (headline, subheading, CTAs)
-  let contentCell = '';
-  // Find the main content container in the hero
-  const contentDiv = element.querySelector('.ix-hero-scale-3x-to-1x-content .container');
-  if (contentDiv) {
-    contentCell = contentDiv;
+  // Row 2: only the image (if present)
+  const row2 = img ? [img] : [''];
+
+  // Row 3: all non-image direct children (including heading, subheading, CTA, etc.)
+  const textContent = [];
+  for (const child of grid.children) {
+    if (child !== img) {
+      textContent.push(child);
+    }
   }
+  const row3 = textContent.length > 0 ? textContent : [''];
 
-  // Compose the cells for the block table
+  // Compose the table
   const cells = [
-    headerRow,
-    [imagesCell],
-    [contentCell],
+    ['Hero (hero23)'],
+    row2,
+    row3
   ];
-
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(table);
 }
