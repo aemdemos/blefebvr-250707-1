@@ -1,3 +1,4 @@
+
 /* Card list grid layout for default cards */
 .cards > ul {
   list-style: none;
@@ -979,5 +980,112 @@
   .cards.cards32 .cards-card-body > p:last-child {
     font-size: 13px;
     padding-top: 0;
+  }
+}
+
+/* merged .cards.cards18 */
+.cards.cards18 {
+  background: #fff;
+  padding: 0;
+}
+
+.cards.cards18 ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.cards.cards18 ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex: 0 1 calc(25% - 27px);
+  min-width: 200px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.cards.cards18 .cards-card-body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cards.cards18 ul > li > .cards-card-body:first-child {
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  margin-top: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 50%;
+  background: #222;
+  flex-shrink: 0;
+}
+
+.cards.cards18 ul > li > .cards-card-body:last-child {
+  flex: 1 1 0;
+  color: #222;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+}
+
+.cards.cards18 ul > li > .cards-card-body:last-child p {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+@media (width <= 900px) {
+  .cards.cards18 ul {
+    gap: 8px 16px;
+  }
+
+  .cards.cards18 ul > li {
+    flex: 0 1 48%;
+    min-width: 140px;
+  }
+}
+
+@media (width <= 600px) {
+  .cards.cards18 ul {
+    gap: 5px 0;
+  }
+
+  .cards.cards18 ul > li {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .cards.cards18 ul > li > .cards-card-body:first-child {
+    width: 11px;
+    min-width: 11px;
+    height: 11px;
+    margin-right: 6px;
+    margin-top: 2px;
+  }
+
+  .cards.cards18 ul > li > .cards-card-body:last-child {
+    font-size: 11px;
   }
 }
