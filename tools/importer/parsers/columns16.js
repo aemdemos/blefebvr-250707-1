@@ -1,60 +1,56 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to get direct children divs
-  const getDirectDivs = (parent) => Array.from(parent.children).filter(el => el.tagName === 'DIV');
+  // Find the top-level grid div
+  const grid = element.querySelector(':scope > div.container > div.w-layout-grid');
+  if (!grid) return;
+  const gridChildren = Array.from(grid.children);
+  if (gridChildren.length < 3) return;
 
-  const headerRow = ['Columns (columns16)'];
+  // Get reference to the three columns (order: text block, contacts list, image)
+  const textCol = gridChildren[0];
+  const contactsCol = gridChildren[1];
+  const imageCol = gridChildren[2];
 
-  // Find main container and grid layouts
-  const container = element.querySelector('.container');
-  if (!container) return;
+  // --- COLUMN 1: Heading cell ---
+  // Compose a fragment with the 3 blocks: eyebrow, h2, subheading (preserving structure)
+  const col1Frag = document.createElement('div');
+  // Eyebrow
+  const eyebrow = textCol.querySelector('h2.eyebrow');
+  if (eyebrow) col1Frag.appendChild(eyebrow);
+  // h2-heading
+  const h2 = textCol.querySelector('h3.h2-heading');
+  if (h2) col1Frag.appendChild(h2);
+  // subheading
+  const subheading = textCol.querySelector('p.subheading');
+  if (subheading) col1Frag.appendChild(subheading);
 
-  // The top area (text + heading, right column details)
-  const topGrid = container.querySelector('.w-layout-grid.grid-layout.tablet-1-column.grid-gap-lg');
-  if (!topGrid) return;
-  const topGridDivs = getDirectDivs(topGrid);
-  if (topGridDivs.length !== 2) return;
-  const leftCol = topGridDivs[0];
-  const rightCol = topGridDivs[1];
-
-  // Compose leftCol cell: Eyebrow + Heading (if present, keep order)
-  const leftColContent = [];
-  const eyebrow = leftCol.querySelector('.eyebrow');
-  if (eyebrow) leftColContent.push(eyebrow);
-  const heading = leftCol.querySelector('h1, h2, h3, h4, h5, h6');
-  if (heading) leftColContent.push(heading);
-
-  // Compose rightCol cell: rich text, author/date info, button (if present, keep order)
-  const rightColContent = [];
-  const paragraph = rightCol.querySelector('.rich-text');
-  if (paragraph) rightColContent.push(paragraph);
-
-  const metaGrid = rightCol.querySelector('.w-layout-grid.grid-layout');
-  if (metaGrid) {
-    // Author row: contains avatar, author name, date, reading time
-    const authorRow = metaGrid.querySelector('.flex-horizontal.y-center.flex-gap-xs');
-    if (authorRow) rightColContent.push(authorRow);
-    // Button row
-    const button = metaGrid.querySelector('a.button');
-    if (button) rightColContent.push(button);
+  // --- COLUMN 2: Contacts cell ---
+  // Use the actual <ul> element (preserving icon SVG, headers, links, etc.)
+  const ul = contactsCol.querySelector('ul');
+  let col2Frag;
+  if (ul) {
+    col2Frag = ul;
+  } else {
+    // Fallback to the column itself, if <ul> not found
+    col2Frag = contactsCol;
   }
 
-  // Bottom images grid
-  const bottomGrid = container.querySelector('.w-layout-grid.grid-layout.mobile-portrait-1-column.grid-gap-md');
-  if (!bottomGrid) return;
-  // Each image is in a .utility-aspect-1x1
-  const imageDivs = Array.from(bottomGrid.querySelectorAll('.utility-aspect-1x1'));
-  // Defensive: only take first two
-  const img1 = imageDivs[0] ? imageDivs[0].querySelector('img') : null;
-  const img2 = imageDivs[1] ? imageDivs[1].querySelector('img') : null;
+  // --- COLUMN 3: Image cell ---
+  // Use the image element as is
+  const img = imageCol.querySelector('img');
+  let col3Frag;
+  if (img) {
+    col3Frag = img;
+  } else {
+    // fallback: use the column
+    col3Frag = imageCol;
+  }
 
-  // Compose table rows
-  const cells = [
-    headerRow,
-    [leftColContent, rightColContent],
-    [img1, img2]
+  // Build the columns table
+  const tableRows = [
+    ['Columns (columns16)'],
+    [col1Frag, col2Frag, col3Frag],
   ];
-
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  const table = WebImporter.DOMUtils.createTable(tableRows, document);
   element.replaceWith(table);
 }

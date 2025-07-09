@@ -1,49 +1,68 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Step 1: Find background image (should be the absolutely positioned cover-image)
+  let backgroundImg = null;
+  const imgCandidates = element.querySelectorAll('img');
+  for (const img of imgCandidates) {
+    if (
+      img.classList.contains('cover-image') &&
+      img.classList.contains('utility-position-absolute')
+    ) {
+      backgroundImg = img; // Reference the actual image element
+      break;
+    }
+  }
+
+  // Step 2: Find the main content column (contains h2, feature rows, button)
+  let mainTextSection = null;
+  const cardBody = element.querySelector('.card-body');
+  if (cardBody) {
+    // There are 2 columns in the grid; pick the one with the h2
+    const columns = cardBody.querySelectorAll(
+      '.w-layout-grid.grid-layout.desktop-3-column.tablet-1-column.grid-gap-md > div'
+    );
+    for (const col of columns) {
+      if (col.querySelector('h2')) {
+        mainTextSection = col;
+        break;
+      }
+    }
+  }
+
+  // Step 3: Compose the content cell
+  const contentParts = [];
+  // (a) Heading (h2)
+  if (mainTextSection) {
+    const h2 = mainTextSection.querySelector('h2');
+    if (h2) contentParts.push(h2);
+  }
+  // (b) Feature list (as paragraphs, in order)
+  if (mainTextSection) {
+    const featuresContainer = mainTextSection.querySelector('.flex-vertical.flex-gap-xs');
+    if (featuresContainer) {
+      const rows = featuresContainer.querySelectorAll('.flex-horizontal.flex-gap-xxs');
+      for (const row of rows) {
+        // Only include the text, not the icon
+        const p = row.querySelector('p');
+        if (p) contentParts.push(p);
+      }
+    }
+  }
+  // (c) Button / CTA
+  if (mainTextSection) {
+    const button = mainTextSection.querySelector(
+      '.button-group a, .button-group button, a.button, button.button'
+    );
+    if (button) contentParts.push(button);
+  }
+
+  // Step 4: Assemble the table
   const headerRow = ['Hero (hero12)'];
+  const secondRow = [backgroundImg ? backgroundImg : ''];
+  const thirdRow = [contentParts];
 
-  // Find the top-level grid layout containing the hero content and image
-  const mainGrid = element.querySelector('.grid-layout.tablet-1-column');
-  if (!mainGrid) return;
-  // Get all immediate children (these should include content and image)
-  const children = Array.from(mainGrid.children);
-  
-  // Find the image element (usually background or main hero image)
-  let img = null;
-  for (const child of children) {
-    if (child.tagName === 'IMG') {
-      img = child;
-      break;
-    }
-  }
+  const rows = [headerRow, secondRow, thirdRow];
 
-  // Find the hero content block (contains heading, text, buttons)
-  let contentBlock = null;
-  for (const child of children) {
-    // Looks for something with a heading (h1, h2, etc)
-    if (child.querySelector && (child.querySelector('h1, h2, h3, h4, h5, h6'))) {
-      contentBlock = child;
-      break;
-    }
-  }
-  // Fallback: If not found, take the first non-image child
-  if (!contentBlock) {
-    contentBlock = children.find((el) => el !== img);
-  }
-  // To handle edge case: if nothing found, provide empty string for semantic safety
-  const imageCell = img ? img : '';
-  const contentCell = contentBlock ? contentBlock : '';
-
-  // Compose block rows
-  const rows = [
-    headerRow,
-    [imageCell],
-    [contentCell]
-  ];
-
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace original element
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(table);
 }

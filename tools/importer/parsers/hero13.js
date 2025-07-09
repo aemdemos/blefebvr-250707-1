@@ -1,35 +1,43 @@
 /* global WebImporter */
+
 export default function parse(element, { document }) {
-  // 1. Find background image (decorative image outside the main card)
-  let backgroundImg = null;
-  const rootDivs = element.querySelectorAll(':scope > div');
-  for (const div of rootDivs) {
-    const img = div.querySelector('img.cover-image.utility-position-absolute');
-    if (img) {
-      backgroundImg = img;
-      break;
-    }
+  // Find the grid container
+  const grid = element.querySelector('.w-layout-grid.grid-layout');
+  if (!grid) return;
+  
+  // Find the background image
+  let imgElem = null;
+  const imgCol = Array.from(grid.children).find(div => div.querySelector('img'));
+  if (imgCol) {
+    imgElem = imgCol.querySelector('img');
   }
 
-  // 2. Find the main card section that contains the headline, features, cta, and inner image
-  let card = null;
-  for (const div of rootDivs) {
-    const found = div.querySelector('.card');
-    if (found) {
-      card = found;
-      break;
+  // Find the main content (headline group)
+  let contentElem = null;
+  const contentCol = Array.from(grid.children).find(div => div.querySelector('.utility-margin-bottom-6rem'));
+  if (contentCol) {
+    const contentBlock = contentCol.querySelector('.utility-margin-bottom-6rem');
+    if (contentBlock) {
+      // Ensure we reference the actual h1 (preserve heading semantics)
+      const headline = contentBlock.querySelector('h1');
+      // Remove empty divs (e.g. button-group) if present
+      const contentClone = document.createElement('div');
+      if (headline) contentClone.appendChild(headline);
+      // If other relevant content (subheading, CTA) present, add here
+      contentElem = contentClone;
     }
   }
+  // Compose rows as per Hero (hero13) requirements
+  const headerRow = ['Hero (hero13)'];
+  const imageRow = [imgElem ? imgElem : ''];
+  const contentRow = [contentElem && contentElem.childNodes.length ? contentElem : ''];
 
-  // 3. Compose table rows: header, background image, content
-  // If a row is missing (e.g., backgroundImg or card), use an empty string
   const cells = [
-    ['Hero (hero13)'],
-    [backgroundImg || ''],
-    [card || ''],
+    headerRow,
+    imageRow,
+    contentRow
   ];
-
-  // 4. Create the block table and replace the original element
   const table = WebImporter.DOMUtils.createTable(cells, document);
+  
   element.replaceWith(table);
 }

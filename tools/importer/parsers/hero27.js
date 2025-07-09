@@ -1,29 +1,33 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row - exact as provided
-  const headerRow = ['Hero (hero27)'];
+  // Find the grid-layout
+  const grid = element.querySelector('.grid-layout');
+  if (!grid) return;
   
-  // 2. Background image row (none in this HTML)
-  const backgroundImageRow = [''];
-
-  // 3. Content row: Should contain the heading, subheading, etc. from the main grid
-  // The .container > .grid-layout contains all of the relevant content
-  const container = element.querySelector(':scope > .container');
-  
-  // Defensive: if no container, fall back to whole element
-  let mainContentBlock = container;
-  if (!mainContentBlock) mainContentBlock = element;
-  // Within .container, find the first immediate .grid-layout (not nested)
-  let grid = mainContentBlock.querySelector(':scope > .grid-layout');
-  if (!grid) {
-    // fallback: first .grid-layout anywhere inside
-    grid = mainContentBlock.querySelector('.grid-layout');
+  // Find the text container and the image
+  let textDiv = null;
+  let imageEl = null;
+  for (const child of Array.from(grid.children)) {
+    if (!textDiv && child.querySelector('h1, h2, h3, h4, h5, h6')) {
+      textDiv = child;
+    }
+    if (!imageEl && child.tagName === 'IMG') {
+      imageEl = child;
+    }
   }
-  // Defensive: if still not found, use the container itself
-  const contentToUse = grid || mainContentBlock;
+  
+  // Compose table rows according to requirements
+  const headerRow = ['Hero (hero27)'];
+  const imageRow = [imageEl ? imageEl : ''];
+  const textRow = [textDiv ? textDiv : ''];
 
-  // Table: [header], [bgimage], [content]
-  const cells = [headerRow, backgroundImageRow, [contentToUse]];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Create the block table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    imageRow,
+    textRow
+  ], document);
+
+  // Replace the section element with the block table
   element.replaceWith(table);
 }

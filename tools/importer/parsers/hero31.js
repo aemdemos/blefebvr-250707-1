@@ -1,36 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Table header as in the example
+  // Header row
   const headerRow = ['Hero (hero31)'];
 
-  // Background image row is blank (no image in HTML)
-  const backgroundRow = [''];
+  // Defensive: find the main grid (content root)
+  let grid = element.querySelector('.grid-layout');
+  if (!grid) grid = element;
 
-  // Get the grid, which holds the content
-  let grid = element.querySelector('.w-layout-grid');
-  if (!grid) {
-    // Try to fallback to .container or the direct element
-    grid = element.querySelector('.container') || element;
+  // Find main image: prefer first meaningful <img>
+  let image = grid.querySelector('img');
+  // If not found, put empty cell
+  let imageRow = [image || ''];
+
+  // Find the main text area (the block with headline, subhead, byline, etc)
+  // Look for a div with an h2 child and author list
+  let textBlock = null;
+  for (const div of grid.querySelectorAll('div')) {
+    if (
+      div.querySelector('.h2-heading') &&
+      div.querySelector('.flex-horizontal.flex-gap-xxs')
+    ) {
+      textBlock = div;
+      break;
+    }
   }
+  // Defensive fallback
+  if (!textBlock) textBlock = grid;
 
-  // Find the relevant children
-  // Expecting structure: [0]=name, [1]=tags, [2]=h2, [3]=richtext
-  const children = grid.querySelectorAll(':scope > *');
+  // Compose rows: header, image, content
+  const rows = [
+    headerRow,
+    imageRow,
+    [textBlock]
+  ];
 
-  // Create a fragment for the content cell
-  const frag = document.createDocumentFragment();
-
-  // Tags (if present)
-  if (children[1]) frag.appendChild(children[1]);
-  // Heading (if present)
-  if (children[2]) frag.appendChild(children[2]);
-  // Paragraphs (if present)
-  if (children[3]) frag.appendChild(children[3]);
-
-  const contentRow = [frag];
-
-  // Compose table and replace original element
-  const cells = [headerRow, backgroundRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Use the actual DOM node, not a clone or new element
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }
