@@ -1,44 +1,27 @@
 /* global WebImporter */
+
 export default function parse(element, { document }) {
-  // Block header row
-  const headerRow = ['Hero (hero3)'];
-
-  // Second row: Background image, none in this HTML
-  const imageRow = [''];
-
-  // Third row: Content (heading, subheading, buttons)
-  // Find the grid layout
-  const grid = element.querySelector('.grid-layout');
-
-  let contentCellElements = [];
-  if (grid) {
-    const children = grid.querySelectorAll(':scope > div');
-    // Text content column
-    if (children[0]) {
-      // Push only non-empty nodes
-      Array.from(children[0].childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0)) {
-          contentCellElements.push(node);
-        }
-      });
-    }
-    // Button group column
-    if (children[1]) {
-      Array.from(children[1].childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0)) {
-          contentCellElements.push(node);
-        }
-      });
-    }
+  // --- Find background image (first <img> inside the first grid cell) ---
+  const bgCell = element.querySelector('.utility-position-relative.utility-min-height-100dvh');
+  let bgImg = null;
+  if (bgCell) {
+    bgImg = bgCell.querySelector('img'); // reference the <img> element directly
   }
 
-  const contentRow = [contentCellElements.length ? contentCellElements : ['']];
+  // --- Find the card containing text content ---
+  let card = element.querySelector('.card-on-inverse');
+  // Defensive: fallback to .card if .card-on-inverse not found
+  if (!card) card = element.querySelector('.card');
 
-  const cells = [
-    headerRow,
-    imageRow,
-    contentRow,
-  ];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // --- Build the block table ---
+  // CRITICAL: header row must match target block name exactly
+  const headerRow = ['Hero (hero3)'];
+  // Second row: background image element as-is (not a string)
+  const bgRow = [bgImg ? bgImg : ''];
+  // Third row: reference card element, not clone or string
+  const textRow = [card ? card : ''];
+
+  const rows = [headerRow, bgRow, textRow];
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

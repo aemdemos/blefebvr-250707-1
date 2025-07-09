@@ -1,39 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row matches block name exactly
-  const headerRow = ['Cards (cards26)'];
-  const cardRows = [];
+  // Find all tab panes (each tab contains a grid of cards)
+  const tabPanes = element.querySelectorAll('.w-tab-pane');
+  const rows = [];
 
-  // Find all direct card-like children by looking for a child div with an <img>
-  const cards = Array.from(element.querySelectorAll(':scope > div')).filter(div => div.querySelector('img'));
-  
-  cards.forEach(card => {
-    // Find the image (first img in the card)
-    const img = card.querySelector('img');
-    // Find the text block: prefer '.utility-padding-all-2rem', or the nearest div containing a heading
-    let textBlock = card.querySelector('.utility-padding-all-2rem');
-    if (!textBlock) {
-      // fallback: look for the first heading or paragraph and get its parent
-      const heading = card.querySelector('h1, h2, h3, h4, h5, h6');
-      if (heading) {
-        textBlock = heading.parentElement;
-      } else {
-        // fallback: just the card itself if no text block found
-        textBlock = card;
+  tabPanes.forEach(tabPane => {
+    const grid = tabPane.querySelector('.w-layout-grid');
+    if (!grid) return;
+    // Select all <a> that are direct cards (both image and non-image types)
+    const cardLinks = Array.from(grid.querySelectorAll('a.utility-link-content-block, a.card-link'));
+    cardLinks.forEach(cardLink => {
+      // Image cell: look for .utility-aspect-3x2 > img
+      let imageCell = '';
+      const aspect = cardLink.querySelector('.utility-aspect-3x2');
+      if (aspect) {
+        const img = aspect.querySelector('img');
+        if (img) imageCell = img;
       }
-    }
-    // For template consistency, if textBlock only contains the image (no heading or paragraph), create an empty div
-    if (
-      textBlock === card &&
-      !card.querySelector('h1, h2, h3, h4, h5, h6') &&
-      !card.querySelector('p')
-    ) {
-      textBlock = document.createElement('div');
-    }
-    cardRows.push([img, textBlock]);
+      // If no image, keep imageCell blank
+
+      // Text cell: contains heading (h3) and optional description
+      const textCellFrag = document.createElement('div');
+      const heading = cardLink.querySelector('h3');
+      if (heading) textCellFrag.appendChild(heading);
+      const desc = cardLink.querySelector('.paragraph-sm');
+      if (desc) textCellFrag.appendChild(desc);
+
+      rows.push([imageCell, textCellFrag]);
+    });
   });
 
-  const cells = [headerRow, ...cardRows];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(table);
+  // Compose table: First row is block name
+  const headerRow = ['Cards (cards26)'];
+  const tableRows = [headerRow, ...rows];
+
+  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+  element.replaceWith(block);
 }

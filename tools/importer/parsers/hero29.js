@@ -1,53 +1,56 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Table header must match exactly
+  // Defensive: Make sure element exists
+  if (!element) return;
+
+  // 1. Header row - block name (must match target block)
   const headerRow = ['Hero (hero29)'];
 
-  // 2. Find the grid container for layout (should have background image and content)
-  const grid = element.querySelector('.w-layout-grid');
+  // 2. Background image row: none in input, so empty cell
+  const bgRow = [''];
 
-  // Defensive checks for presence
-  if (!grid) {
-    // No grid present; cannot build block as expected, do nothing
-    return;
-  }
+  // 3. Content row: extract in correct, visual order
+  // Find the grid container
+  const grid = element.querySelector('.grid-layout') || element.querySelector('[class*="grid-layout"]');
+  const contentParts = [];
+  if (grid) {
+    // 1. Name (e.g., Taylor Brooks)
+    const name = grid.querySelector('.paragraph-xl');
+    if (name) contentParts.push(name);
 
-  // 3. Get the image (background visual)
-  let imageEl = null;
-  let contentEl = null;
-  // The grid layout has two children: one text, one image
-  const gridChildren = Array.from(grid.children);
-  for (const child of gridChildren) {
-    if (child.tagName === 'IMG') {
-      imageEl = child;
-    } else if (!contentEl) {
-      contentEl = child;
+    // 2. Tags (all tags, in order)
+    const tagsWrapper = grid.querySelector('.flex-vertical');
+    if (tagsWrapper) {
+      const tagDivs = Array.from(tagsWrapper.querySelectorAll('.tag'));
+      if (tagDivs.length) {
+        // Use existing wrapper for semantic grouping
+        contentParts.push(tagsWrapper);
+      }
     }
+
+    // 3. Headline (h2)
+    const headline = grid.querySelector('h2');
+    if (headline) contentParts.push(headline);
+
+    // 4. Paragraphs (rich-text)
+    // Defensive: look for .rich-text.paragraph-lg
+    const richTextContainer = grid.querySelector('.rich-text.paragraph-lg');
+    if (richTextContainer) contentParts.push(richTextContainer);
   }
 
-  // 4. Second row: the background image, or empty string if missing
-  const imageRow = [imageEl || ''];
-
-  // 5. Third row: all text/cta content as single cell
-  // We want to keep heading, subhead, paragraph, cta button, etc, together
-  let contentRowContent;
-  if (contentEl) {
-    // Reference all children in order, so all text and CTA is included
-    contentRowContent = Array.from(contentEl.children);
-  } else {
-    // Fallback: empty if not present
-    contentRowContent = '';
+  // If grid not found or contentParts empty: fallback to section children
+  if (!grid || !contentParts.length) {
+    contentParts.length = 0;
+    Array.from(element.children).forEach(el => contentParts.push(el));
   }
-  const contentRow = [contentRowContent];
 
-  // 6. Compose cells as instructed: 1 column, 3 rows
-  const cells = [
+  // Compose block table
+  const tableCells = [
     headerRow,
-    imageRow,
-    contentRow
+    bgRow,
+    [contentParts]
   ];
-
-  // 7. Create the block table and replace
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(table);
+  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
+  // Replace the section with the new block table
+  element.replaceWith(blockTable);
 }
