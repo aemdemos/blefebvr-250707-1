@@ -666,11 +666,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Tabs",
       "cluster": 21,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage21)",
-      "key": "textAndImage21",
+      "source": "Tabs",
+      "target": "Tabs (tabs21)",
+      "key": "tabs21",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/",
