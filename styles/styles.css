@@ -28,7 +28,7 @@
   --heading-font-size-m: 22.56px;
   --heading-font-size-s: 16px;
   --heading-font-size-xs: 11.36px;
-  --nav-height: 64px;
+  --nav-height: 75px;
   --header-height: var(--nav-height);
 }
 
@@ -251,4 +251,12 @@ main .section.light, main .section.highlight {
 
 .section.hidden {
   display: none;
+}
+
+.section.section-1 {
+    background: rgb(247, 248, 245) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-2 {
+    background: rgb(0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;
 }
