@@ -311,11 +311,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Columns",
       "cluster": 6,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage6)",
-      "key": "textAndImage6",
+      "source": "Columns",
+      "target": "Columns (columns6)",
+      "key": "columns6",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
@@ -334,11 +334,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Hero",
       "cluster": 7,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage7)",
-      "key": "textAndImage7",
+      "source": "Hero",
+      "target": "Hero (hero7)",
+      "key": "hero7",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
@@ -487,11 +487,11 @@
       ]
     },
     {
-      "name": "Embed (video)",
+      "name": "Hero",
       "cluster": 11,
-      "source": "Embed",
-      "target": "Embed",
-      "key": "embedVideo11",
+      "source": "Hero",
+      "target": "Hero (hero11)",
+      "key": "hero11",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
@@ -520,11 +520,11 @@
       ]
     },
     {
-      "name": "Cards",
+      "name": "Columns",
       "cluster": 12,
-      "source": "Cards",
-      "target": "Cards (cards12)",
-      "key": "cards12",
+      "source": "Columns",
+      "target": "Columns (columns12)",
+      "key": "columns12",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
@@ -541,11 +541,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Hero",
       "cluster": 13,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage13)",
-      "key": "textAndImage13",
+      "source": "Hero",
+      "target": "Hero (hero13)",
+      "key": "hero13",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-insights",
@@ -634,11 +634,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 19,
-      "source": "Columns",
-      "target": "Columns (columns19)",
-      "key": "columns19",
+      "source": "Hero",
+      "target": "Hero (hero19)",
+      "key": "hero19",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -669,7 +669,7 @@
       "name": "Tabs",
       "cluster": 21,
       "source": "Tabs",
-      "target": "Tabs (tabs21)",
+      "target": "Tabs",
       "key": "tabs21",
       "instances": [
         {
@@ -698,11 +698,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 23,
-      "source": "Columns",
-      "target": "Columns (columns23)",
-      "key": "columns23",
+      "source": "Hero",
+      "target": "Hero (hero23)",
+      "key": "hero23",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
@@ -774,11 +774,11 @@
       ]
     },
     {
-      "name": "Table (no header)",
+      "name": "Accordion",
       "cluster": 27,
-      "source": "Table (no header)",
-      "target": "Table (no header)",
-      "key": "tableNoHeader27",
+      "source": "Accordion",
+      "target": "Accordion (accordion27)",
+      "key": "accordion27",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/faq",
@@ -836,11 +836,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Columns",
       "cluster": 31,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage31)",
-      "key": "textAndImage31",
+      "source": "Columns",
+      "target": "Columns (columns31)",
+      "key": "columns31",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
@@ -870,7 +870,7 @@
       "name": "Accordion",
       "cluster": 33,
       "source": "Accordion",
-      "target": "Accordion",
+      "target": "Accordion (accordion33)",
       "key": "accordion33",
       "instances": [
         {
@@ -898,11 +898,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Carousel",
       "cluster": 35,
-      "source": "Columns",
-      "target": "Columns (columns35)",
-      "key": "columns35",
+      "source": "Carousel",
+      "target": "Carousel",
+      "key": "carousel35",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
@@ -945,11 +945,11 @@
       ]
     },
     {
-      "name": "Text and image",
+      "name": "Hero",
       "cluster": 38,
-      "source": "Text and image",
-      "target": "Text and image (textAndImage38)",
-      "key": "textAndImage38",
+      "source": "Hero",
+      "target": "Hero (hero38)",
+      "key": "hero38",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-young-adults-casual-sport",
