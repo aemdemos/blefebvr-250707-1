@@ -1,70 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Defensive checks
-  if (!element || !document) return;
-
-  // Get the direct .container child
+  // Step 1: Find the main content grid
   const container = element.querySelector(':scope > .container');
   if (!container) return;
+  const outerGrid = container.querySelector('.grid-layout');
+  if (!outerGrid) return;
+  const outerGridChildren = Array.from(outerGrid.children);
 
-  // Get the main grid holding heading, quote, columns grid
-  const mainGrid = container.querySelector(':scope > .w-layout-grid.grid-layout');
-  if (!mainGrid) return;
+  // Find the heading and quote (first 2 <p> elements)
+  const heading = outerGridChildren.find(el => el.matches('p.h2-heading'));
+  const quote = outerGridChildren.find(el => el.matches('p.paragraph-lg'));
+  // Find the bottom row grid (author row)
+  const bottomRow = outerGridChildren.find(el => el.matches('div.grid-layout'));
 
-  // The structure is:
-  // [0] h2-heading
-  // [1] paragraph-lg
-  // [2] grid-layout (testimonial grid)
-  const mainChildren = Array.from(mainGrid.children);
-  if (mainChildren.length < 3) return;
-
-  const heading = mainChildren[0];
-  const quote = mainChildren[1];
-  const testimonialGrid = mainChildren[2];
-
-  // Defensive: ensure testimonialGrid is a grid
-  if (!testimonialGrid || !testimonialGrid.classList.contains('w-layout-grid')) return;
-
-  // Testimonial grid children:
-  // [0] divider
-  // [1] flex-horizontal (avatar, name, role)
-  // [2] utility-display-inline-block (svg badge) or similar
-  const testimonialChildren = Array.from(testimonialGrid.children);
-  if (testimonialChildren.length < 3) return;
-
-  // Divider is visual; skip
-  // Avatar flex (name, role)
-  const avatarFlex = testimonialChildren[1];
-  // Badge or logo (svg)
-  const badgeHolder = testimonialChildren[2];
-
-  // Compose left column: heading, quote, avatarFlex (in that order, with space)
-  const leftCol = document.createElement('div');
-  if (heading) leftCol.appendChild(heading);
-  if (quote) leftCol.appendChild(quote);
-  if (avatarFlex) leftCol.appendChild(avatarFlex);
-
-  // Compose right column: badge (brand mark)
-  let rightCol;
-  if (badgeHolder) {
-    // If the badgeHolder contains an SVG (not just a wrapping div)
-    let badgeSvg = badgeHolder.querySelector('svg');
-    if (!badgeSvg && badgeHolder.tagName === 'SVG') badgeSvg = badgeHolder;
-    if (badgeSvg) {
-      const svgWrapper = document.createElement('div');
-      svgWrapper.appendChild(badgeSvg);
-      rightCol = svgWrapper;
-    } else {
-      rightCol = badgeHolder;
-    }
+  // Find the author info and logo (in bottomRow, but skip the divider)
+  let authorBlock = null;
+  let logoBlock = null;
+  if (bottomRow) {
+    const bChildren = Array.from(bottomRow.children).filter(c => !c.classList.contains('divider'));
+    if (bChildren[0]) authorBlock = bChildren[0];
+    if (bChildren[1]) logoBlock = bChildren[1];
   }
 
-  // Block header row *must* be exactly this:
-  const headerRow = ['Columns (columns25)'];
-  const contentRow = [leftCol, rightCol];
+  // Compose the columns for the block table
+  // Example: 2 columns: left = heading + author, right = quote + logo
+  // But per review, the desired structure is:
+  // row1: header (1 cell)
+  // row2: heading (col1), quote (col2)
+  // row3: author (col1), logo (col2)
 
-  const rows = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  const cells = [
+    ['Columns (columns25)'],
+    [heading, quote],
+    [authorBlock, logoBlock]
+  ];
 
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

@@ -1,40 +1,39 @@
 /* global WebImporter */
-
 export default function parse(element, { document }) {
-  // Helper to extract the image and text content for each card
-  function extractCardContent(cardDiv) {
-    // Find the first image in the card
-    const img = cardDiv.querySelector('img');
-    // Find the text content (h3 and p)
-    let textBlock = cardDiv.querySelector('.utility-padding-all-2rem');
+  // Prepare the header row
+  const headerRow = ['Cards (cards24)'];
+  const rows = [headerRow];
+
+  // Select all card anchor elements directly under the grid
+  const cards = element.querySelectorAll(':scope > a');
+  cards.forEach((card) => {
+    // Left cell: image (first <img> in the .utility-aspect-2x3 container)
+    let imageEl = null;
+    const imgContainer = card.querySelector('.utility-aspect-2x3');
+    if (imgContainer) {
+      imageEl = imgContainer.querySelector('img');
+    }
+
+    // Right cell: text content
+    // Get meta block (tag + date) and heading
+    const metaDiv = card.querySelector('.flex-horizontal');
+    const heading = card.querySelector('h3, h4, h5, h6');
+    // Compose right cell content
+    const rightCellContent = [];
+    if (metaDiv) rightCellContent.push(metaDiv);
+    if (heading) rightCellContent.push(heading);
+    if (rightCellContent.length === 0) rightCellContent.push(''); // fallback
     
-    // Fallback if no .utility-padding-all-2rem
-    if (!textBlock) {
-      const h3 = cardDiv.querySelector('h3');
-      const p = cardDiv.querySelector('p');
-      if (h3 || p) {
-        textBlock = document.createElement('div');
-        if (h3) textBlock.appendChild(h3);
-        if (p) textBlock.appendChild(p);
-      }
-    }
-    return [img, textBlock];
-  }
-
-  // Only consider divs which contain an image as a card container
-  const cards = Array.from(element.querySelectorAll(':scope > div')).filter(div => div.querySelector('img'));
-
-  // Build table rows: header, then one per card
-  const rows = [['Cards (cards24)']];
-  cards.forEach((cardDiv) => {
-    const [img, textBlock] = extractCardContent(cardDiv);
-    // Only accept rows with both image and text
-    if (img && textBlock && (textBlock.textContent.trim() || textBlock.querySelector('h3'))) {
-      rows.push([img, textBlock]);
-    }
+    // Insert the row
+    rows.push([
+      imageEl || '',
+      rightCellContent.length === 1 ? rightCellContent[0] : rightCellContent,
+    ]);
   });
 
-  // Create and replace with the table
+  // Create the block table
   const table = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element
   element.replaceWith(table);
 }

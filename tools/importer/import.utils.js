@@ -161,10 +161,16 @@ export const TableBuilder = (originalFunc) => {
 };
 
 function reduceInstances(instances = []) {
-  return instances.map(({ urlHash, xpath, uuid }) => ({
+  return instances.map(({
     urlHash,
     xpath,
     uuid,
+    section,
+  }) => ({
+    urlHash,
+    xpath,
+    uuid,
+    section,
   }));
 }
 
@@ -208,6 +214,7 @@ export function mergeInventory(siteUrls, inventory, publishUrl) {
     targetUrl: targetUrl || publishUrl,
     urls,
     fragments,
+    sections: inventory.sections,
     blocks,
     outliers,
   };

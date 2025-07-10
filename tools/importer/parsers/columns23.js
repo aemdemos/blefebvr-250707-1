@@ -1,39 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the left column: the first .w-layout-grid.grid-layout inside .container
-  const container = element.querySelector('.container');
-  let leftCol = null;
-  if (container) {
-    leftCol = container.querySelector('.w-layout-grid.grid-layout.tablet-1-column');
-  }
+  // Find the main grid with two columns
+  const mainGrid = element.querySelector('.w-layout-grid.grid-layout');
+  if (!mainGrid) return;
+  const children = Array.from(mainGrid.children);
 
-  // Find the right column: .w-layout-grid.grid-layout.mobile-portrait-1-column
-  let rightCol = element.querySelector('.grid-layout.mobile-portrait-1-column');
-
-  // If for some reason rightCol is missing, fallback to the second grid-layout in the section
-  if (!rightCol) {
-    const allGrids = element.querySelectorAll('.w-layout-grid.grid-layout');
-    if (allGrids.length > 1) {
-      rightCol = allGrids[1];
+  // Find left (content) and right (image) columns
+  let leftContent = null;
+  let rightImage = null;
+  for (const child of children) {
+    if (child.tagName === 'IMG') {
+      rightImage = child;
+    } else if (child.classList.contains('w-layout-grid')) {
+      // Instead of passing the whole grid, extract just the inner content div
+      // Find the first child that is a .section (holds heading, text, buttons)
+      const section = child.querySelector('.section');
+      if (section) {
+        leftContent = section;
+      } else {
+        // fallback if structure is different
+        leftContent = child;
+      }
     }
   }
 
-  // Defensive: ensure both are at least empty divs if not found
-  const leftNode = leftCol || document.createElement('div');
-  const rightNode = rightCol || document.createElement('div');
+  if (!leftContent || !rightImage) return;
 
-  // Block name header row
+  // Table header row
   const headerRow = ['Columns (columns23)'];
+  // Second row: two columns only (no wrapper grid in left cell)
+  const contentRow = [leftContent, rightImage];
+  const cells = [headerRow, contentRow];
 
-  // Table body row: left, right
-  const contentRow = [leftNode, rightNode];
-
-  // Create the block table
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow,
-  ], document);
-
-  // Replace the original section with the new table block
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

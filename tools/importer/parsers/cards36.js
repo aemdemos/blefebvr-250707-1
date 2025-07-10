@@ -1,59 +1,70 @@
 /* global WebImporter */
-
 export default function parse(element, { document }) {
-  // Always use target block name for header row
-  const headerRow = ['Cards (cards36)'];
-  const rows = [];
+  // Find the main grid inside the section
+  const rootGrid = element.querySelector(':scope > div > div.grid-layout');
+  if (!rootGrid) return;
 
-  // Find the top-level card grid
-  const mainGrid = element.querySelector('.w-layout-grid');
-  if (!mainGrid) return;
-
-  // First card: large left (h2 heading)
-  const firstCard = mainGrid.querySelector('a.utility-link-content-block.w-inline-block');
-  if (firstCard) {
-    // First cell: image (mandatory)
-    let image = null;
-    const imgDiv = firstCard.querySelector('.utility-aspect-2x3');
-    if (imgDiv) image = imgDiv.querySelector('img');
-
-    // Second cell: text (title, description, CTA)
-    const textDiv = firstCard.querySelector('.utility-padding-all-2rem');
-    const cardText = [];
-    if (textDiv) {
-      const heading = textDiv.querySelector('h3');
-      const para = textDiv.querySelector('p');
-      const cta = textDiv.querySelector('.button');
-      if (heading) cardText.push(heading);
-      if (para) cardText.push(para);
-      if (cta) cardText.push(cta);
+  // Get the first (large) card on the left, and the right inner grid
+  const gridChildren = Array.from(rootGrid.children);
+  // The first card is always an anchor (a.utility-link-content-block)
+  let firstCard = null;
+  let rightGrid = null;
+  for (const child of gridChildren) {
+    if (child.matches('a.utility-link-content-block')) {
+      firstCard = child;
+    } else if (child.matches('div.grid-layout')) {
+      rightGrid = child;
     }
-    rows.push([image, cardText]);
   }
 
-  // Find nested grid for the other cards
-  const nestedGrid = mainGrid.querySelector('.w-layout-grid.grid-layout.tablet-1-column.grid-gap-sm.y-top');
-  if (nestedGrid) {
-    const innerCards = Array.from(nestedGrid.children).filter(child => child.tagName === 'A' && child.classList.contains('utility-link-content-block'));
-    innerCards.forEach(card => {
-      // First cell: image
-      let image = null;
-      const aspectDiv = card.querySelector('div[class*="utility-aspect"]');
-      if (aspectDiv) image = aspectDiv.querySelector('img');
-      // Second cell: text
-      const cardText = [];
-      const heading = card.querySelector('h3');
-      const para = card.querySelector('p');
-      const cta = card.querySelector('.button'); // defensive, not present in sample
-      if (heading) cardText.push(heading);
-      if (para) cardText.push(para);
-      if (cta) cardText.push(cta);
-      rows.push([image, cardText]);
+  const cards = [];
+
+  // Helper function to get image and text content from a card
+  function getCardCells(cardEl) {
+    // Find image
+    let img = cardEl.querySelector('img');
+    // Find heading (h2, h3, h4)
+    let heading = cardEl.querySelector('h1, h2, h3, h4, h5, h6');
+    // Find paragraphs
+    const paragraphs = Array.from(cardEl.querySelectorAll('p'));
+    // Find CTA (button or .button)
+    let cta = cardEl.querySelector('.button, a.button');
+    // Build text content fragment
+    const textContent = document.createDocumentFragment();
+    if (heading) textContent.appendChild(heading);
+    paragraphs.forEach(p => textContent.appendChild(p));
+    if (cta) textContent.appendChild(cta);
+    // If no heading/paragraphs/cta, fallback to all text nodes
+    if (!heading && paragraphs.length === 0 && !cta) {
+      Array.from(cardEl.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          textContent.appendChild(node);
+        }
+      });
+    }
+    return [img, textContent];
+  }
+
+  // Process first card
+  if (firstCard) {
+    cards.push(getCardCells(firstCard));
+  }
+
+  // Process right grid cards
+  if (rightGrid) {
+    const rightCards = Array.from(rightGrid.querySelectorAll(':scope > a.utility-link-content-block'));
+    rightCards.forEach(card => {
+      cards.push(getCardCells(card));
     });
   }
 
-  // Build table
-  const tableRows = [headerRow, ...rows];
-  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+  // Compose the table as per spec
+  const cells = [
+    ['Cards (cards36)'],
+    ...cards
+  ];
+
+  // Create and replace
+  const block = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(block);
 }

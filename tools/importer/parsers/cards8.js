@@ -1,27 +1,23 @@
 /* global WebImporter */
-
 export default function parse(element, { document }) {
-  // Always use the target block name as the table header
+  // Header row as a single cell, exactly matching the example
   const headerRow = ['Cards (cards8)'];
 
-  // Select all direct card divs
-  const cardDivs = Array.from(element.querySelectorAll(':scope > div.utility-aspect-1x1'));
+  // Get all card containers (immediate children)
+  const cardDivs = Array.from(element.querySelectorAll(':scope > div'));
 
-  // If empty, do nothing
-  if (!cardDivs.length) return;
-
-  // Each card row: [image]
-  const rows = cardDivs.map(div => {
-    const img = div.querySelector('img');
-    return [img || document.createTextNode('')];
+  // For each card, extract the image for the first cell; text cell is empty because no text is present in this HTML
+  const rows = cardDivs.map(cardDiv => {
+    const img = cardDiv.querySelector('img');
+    return [img, ''];
   });
 
-  // Build the table: header row + card rows
-  const tableRows = [headerRow, ...rows];
+  // Compose the table structure
+  const tableData = [headerRow, ...rows];
 
-  // Create the block table using the imported DOM utility
-  const table = WebImporter.DOMUtils.createTable(tableRows, document);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(tableData, document);
 
-  // Replace the original grid element with the table
-  element.replaceWith(table);
+  // Replace the original element
+  element.replaceWith(block);
 }

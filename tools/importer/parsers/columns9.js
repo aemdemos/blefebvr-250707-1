@@ -1,25 +1,28 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Only operate on the correct grid block
-  const grid = element.querySelector('.w-layout-grid.grid-layout');
+  // Find the grid container
+  const container = element.querySelector('.container');
+  if (!container) return;
+  const grid = container.querySelector('.grid-layout');
   if (!grid) return;
 
-  // Get all direct children of the grid as columns
+  // Get all columns (direct children of the grid)
   const columns = Array.from(grid.children);
-  if (!columns.length) return;
+  if (columns.length === 0) return;
 
-  // Use the required header row format
+  // The header row must be a single cell array, so only one column in the header
   const headerRow = ['Columns (columns9)'];
+  // The second row is one cell for each column
+  const secondRow = columns;
 
-  // Each cell should be a REFERENCE to the actual column element
-  const columnsRow = columns.map(col => col);
+  // The table structure matches:
+  // [ [header], [col1, col2, ... colN] ]
+  const table = WebImporter.DOMUtils.createTable([headerRow, secondRow], document);
 
-  // Table rows: header, then one row of columns
-  const tableRows = [headerRow, columnsRow];
+  // The resulting table's first row will have one <th> cell,
+  // and the implementation of createTable() will automatically set colspan to match the number of columns if the header row has only one cell.
+  // This matches the markdown and structural requirements.
 
-  // Use built-in helper to create the table
-  const table = WebImporter.DOMUtils.createTable(tableRows, document);
-
-  // Replace the original block with the table block
+  // Replace the original element with the new table
   element.replaceWith(table);
 }

@@ -1,30 +1,21 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the .grid-layout inside the input element
-  const grid = element.querySelector('.grid-layout');
-  if (!grid) return;
-
-  // Collect all column content into a single cell for the data row
-  const columns = Array.from(grid.children);
-  if (!columns.length) return;
-
-  // Create a wrapper div to hold all columns' content
-  const wrapper = document.createElement('div');
-  columns.forEach(col => {
-    wrapper.appendChild(col);
-  });
-
-  // Header must have exactly one column
-  const headerRow = ['Columns (columns14)'];
-  // Data row: one cell with all columns' content
-  const contentRow = [wrapper];
-
-  // Create the table
+  // Find the grid layout which contains the columns
+  const grid = element.querySelector(':scope > .grid-layout');
+  if (!grid) {
+    return;
+  }
+  const columnEls = Array.from(grid.children);
+  if (!columnEls.length) return;
+  // Create the table with WebImporter.DOMUtils.createTable
   const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow,
+    ['Columns (columns14)'],
+    columnEls
   ], document);
-
-  // Replace element with the new block table
+  // Fix: Set correct colspan on the header <th> to span all columns
+  const headerRow = table.querySelector('tr:first-child');
+  if (headerRow && headerRow.children.length === 1) {
+    headerRow.children[0].setAttribute('colspan', columnEls.length);
+  }
   element.replaceWith(table);
 }

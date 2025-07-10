@@ -1,62 +1,69 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract cards from grid structure
-  function extractCardsFromGrid(grid) {
-    const cardEls = [];
-    // Get first column: large prominent card
-    const largeCard = grid.querySelector('a.utility-link-content-block');
-    if (largeCard) cardEls.push(largeCard);
-    // Second area: a horizontal flexbox with two cards (has its own flex container)
-    const flex1 = grid.querySelector('.flex-horizontal.flex-vertical.flex-gap-sm.w-node-f71f504d-ed02-fbe1-5974-4ebc66911f0e-86a1a9b3');
-    if (flex1) {
-      flex1.querySelectorAll('a.utility-link-content-block').forEach(card => cardEls.push(card));
-    }
-    // Third area: a flex with several mini cards (no images, just headings/descriptions) separated by dividers.
-    const flex2 = grid.querySelector('.flex-horizontal.flex-vertical.flex-gap-sm.w-node-f71f504d-ed02-fbe1-5974-4ebc66911f34-86a1a9b3');
-    if (flex2) {
-      flex2.querySelectorAll('a.utility-link-content-block').forEach(card => cardEls.push(card));
-    }
-    return cardEls;
+  // Helper to assemble the text column for a card
+  function getTextContent(cardLink) {
+    // Gather tag, heading, and paragraph (in order)
+    const items = [];
+    const tagGroup = Array.from(cardLink.children).find(el => el.classList && el.classList.contains('tag-group'));
+    if (tagGroup) items.push(tagGroup);
+    const heading = Array.from(cardLink.children).find(el => (/^H[1-6]$/).test(el.tagName));
+    if (heading) items.push(heading);
+    const para = Array.from(cardLink.children).find(el => el.tagName === 'P');
+    if (para) items.push(para);
+    return items;
   }
 
-  // Helper to build content cell for a card
-  function buildCardTextCell(card) {
-    const content = [];
-    // Tag group (preserve the real element)
-    const tagGroup = card.querySelector('.tag-group');
-    if (tagGroup) content.push(tagGroup);
-    // Heading - choose the heading element, preserve source heading level
-    let heading = card.querySelector('h1,h2,h3,h4,h5,h6');
-    if (heading) content.push(heading);
-    // Paragraph/description
-    const paragraph = card.querySelector('p');
-    if (paragraph) content.push(paragraph);
-    return content.length === 1 ? content[0] : content;
+  // Find the main grid
+  const grid = element.querySelector('.w-layout-grid.grid-layout');
+  const rows = [];
+  rows.push(['Cards (cards2)']);
+  if (!grid) {
+    // No grid, nothing to do
+    element.replaceWith(WebImporter.DOMUtils.createTable(rows, document));
+    return;
   }
 
-  // Helper to build image cell for a card
-  function buildCardImageCell(card) {
-    const img = card.querySelector('img');
-    if (img) return img;
-    // If no image, must return empty string
-    return '';
+  // The structure is:
+  //   - First child: main big card (large image, tag, h3, p)
+  //   - Second child: flex with 2 cards (both have image, tag, h3, p)
+  //   - Third child: flex with only text-based cards (just h3, p)
+  const gridChildren = Array.from(grid.children);
+
+  // 1st card: large card, has image
+  const firstCard = gridChildren[0];
+  if (firstCard && firstCard.tagName === 'A') {
+    const imgDiv = firstCard.querySelector('div.utility-aspect-1x1, div.utility-aspect-3x2');
+    let img = imgDiv ? imgDiv.querySelector('img') : null;
+    img = img || firstCard.querySelector('img');
+    const textCol = getTextContent(firstCard);
+    rows.push([img, textCol]);
   }
 
-  // Main logic
-  const headerRow = ['Cards (cards2)'];
-  const grid = element.querySelector('.grid-layout');
-  if (!grid) return;
-  const cards = extractCardsFromGrid(grid);
+  // 2nd group: two cards with images
+  const secondGroup = gridChildren[1];
+  if (secondGroup && secondGroup.classList.contains('flex-horizontal')) {
+    const links = Array.from(secondGroup.querySelectorAll(':scope > a.utility-link-content-block'));
+    links.forEach(link => {
+      // Find image in card
+      let imgDiv = link.querySelector('div.utility-aspect-1x1, div.utility-aspect-3x2');
+      let img = imgDiv ? imgDiv.querySelector('img') : null;
+      img = img || link.querySelector('img');
+      const textCol = getTextContent(link);
+      rows.push([img, textCol]);
+    });
+  }
 
-  // Build rows
-  const rows = cards.map(card => {
-    const image = buildCardImageCell(card);
-    const textContent = buildCardTextCell(card);
-    return [image, textContent];
-  });
+  // 3rd group: text-only cards
+  const thirdGroup = gridChildren[2];
+  if (thirdGroup && thirdGroup.classList.contains('flex-horizontal')) {
+    const links = Array.from(thirdGroup.querySelectorAll(':scope > a.utility-link-content-block'));
+    links.forEach(link => {
+      const textCol = getTextContent(link);
+      rows.push(['', textCol]);
+    });
+  }
 
-  // Compose table data
-  const table = [headerRow, ...rows];
-  const block = WebImporter.DOMUtils.createTable(table, document);
-  element.replaceWith(block);
+  // Build the block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(table);
 }

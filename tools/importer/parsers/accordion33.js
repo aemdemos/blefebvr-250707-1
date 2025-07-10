@@ -1,48 +1,40 @@
 /* global WebImporter */
-
 export default function parse(element, { document }) {
-  // Find all immediate accordion dropdowns (do not select nested)
-  const accordions = Array.from(element.querySelectorAll(':scope > .accordion.w-dropdown'));
+  // Header row exactly as required
+  const headerRow = ['Accordion'];
 
-  // Compose rows: header first
-  const rows = [
-    ['Accordion (accordion33)']
-  ];
+  // Select all direct accordion panels
+  const accordions = Array.from(element.querySelectorAll(':scope > .accordion'));
 
-  accordions.forEach(accordion => {
-    // TITLE: always use the .w-dropdown-toggle > .paragraph-lg
-    const toggle = accordion.querySelector('.w-dropdown-toggle');
-    let titleCell = null;
+  const rows = accordions.map(acc => {
+    // Title: .w-dropdown-toggle > .paragraph-lg (preferred), or whole toggle if not found
+    let title = '';
+    const toggle = acc.querySelector('.w-dropdown-toggle');
     if (toggle) {
-      // Only get the label, not icons
-      const para = toggle.querySelector('.paragraph-lg');
-      if (para) {
-        titleCell = para;
-      } else {
-        // fallback, but should not happen
-        titleCell = toggle;
-      }
+      const paragraph = toggle.querySelector('.paragraph-lg');
+      title = paragraph ? paragraph : toggle;
     }
-
-    // CONTENT: use w-dropdown-list > .w-richtext if present; otherwise, the full dropdown-list
-    const nav = accordion.querySelector('.w-dropdown-list');
-    let contentCell = null;
+    // Content: nav.accordion-content > (first child div) > .w-richtext if present, else the inner div, else nav
+    let content = '';
+    const nav = acc.querySelector('nav.accordion-content');
     if (nav) {
-      const rich = nav.querySelector('.w-richtext');
-      if (rich) {
-        contentCell = rich;
+      const innerDiv = nav.querySelector(':scope > div');
+      if (innerDiv && innerDiv.children.length === 1 && innerDiv.firstElementChild.classList.contains('w-richtext')) {
+        content = innerDiv.firstElementChild;
+      } else if (innerDiv) {
+        content = innerDiv;
       } else {
-        contentCell = nav;
+        content = nav;
       }
     }
-
-    // Only push row if both cells are found
-    if (titleCell && contentCell) {
-      rows.push([titleCell, contentCell]);
-    }
+    return [title, content];
   });
 
-  // Make the table, referencing DOM elements (not clones or text)
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Create and replace table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    ...rows
+  ], document);
+
   element.replaceWith(table);
 }
