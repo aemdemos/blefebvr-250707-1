@@ -311,11 +311,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 6,
-      "source": "Columns",
-      "target": "Columns (columns6)",
-      "key": "columns6",
+      "source": "Hero",
+      "target": "Hero (hero6)",
+      "key": "hero6",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
@@ -573,11 +573,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 15,
-      "source": "Columns",
-      "target": "Columns (columns15)",
-      "key": "columns15",
+      "source": "Hero",
+      "target": "Hero (hero15)",
+      "key": "hero15",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
@@ -619,11 +619,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Cards",
       "cluster": 18,
-      "source": "Columns",
-      "target": "Columns (columns18)",
-      "key": "columns18",
+      "source": "Cards",
+      "target": "Cards (cards18)",
+      "key": "cards18",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/",
@@ -698,11 +698,11 @@
       ]
     },
     {
-      "name": "Hero",
+      "name": "Columns",
       "cluster": 23,
-      "source": "Hero",
-      "target": "Hero (hero23)",
-      "key": "hero23",
+      "source": "Columns",
+      "target": "Columns (columns23)",
+      "key": "columns23",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-blog-post",
