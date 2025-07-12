@@ -573,11 +573,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 15,
-      "source": "Columns",
-      "target": "Columns (columns15)",
-      "key": "columns15",
+      "source": "Hero",
+      "target": "Hero (hero15)",
+      "key": "hero15",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
