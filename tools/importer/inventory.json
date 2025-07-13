@@ -289,11 +289,11 @@
       ]
     },
     {
-      "name": "Cards",
+      "name": "Columns",
       "cluster": 5,
-      "source": "Cards",
-      "target": "Cards (cards5)",
-      "key": "cards5",
+      "source": "Columns",
+      "target": "Columns (columns5)",
+      "key": "columns5",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -520,11 +520,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Cards",
       "cluster": 12,
-      "source": "Columns",
-      "target": "Columns (columns12)",
-      "key": "columns12",
+      "source": "Cards",
+      "target": "Cards (cards12)",
+      "key": "cards12",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-culture",
@@ -573,11 +573,11 @@
       ]
     },
     {
-      "name": "Hero",
+      "name": "Columns",
       "cluster": 15,
-      "source": "Hero",
-      "target": "Hero (hero15)",
-      "key": "hero15",
+      "source": "Columns",
+      "target": "Columns (columns15)",
+      "key": "columns15",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/latest-trends-young-fashion",
@@ -774,11 +774,11 @@
       ]
     },
     {
-      "name": "Accordion",
+      "name": "Table (no header)",
       "cluster": 27,
-      "source": "Accordion",
-      "target": "Accordion (accordion27)",
-      "key": "accordion27",
+      "source": "Table (no header)",
+      "target": "Table (no header)",
+      "key": "tableNoHeader27",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/faq",
@@ -870,7 +870,7 @@
       "name": "Accordion",
       "cluster": 33,
       "source": "Accordion",
-      "target": "Accordion (accordion33)",
+      "target": "Accordion",
       "key": "accordion33",
       "instances": [
         {
