@@ -289,11 +289,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Cards",
       "cluster": 5,
-      "source": "Columns",
-      "target": "Columns (columns5)",
-      "key": "columns5",
+      "source": "Cards",
+      "target": "Cards (cards5)",
+      "key": "cards5",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/fashion-trends-of-the-season",
@@ -836,11 +836,11 @@
       ]
     },
     {
-      "name": "Hero",
+      "name": "Columns",
       "cluster": 31,
-      "source": "Hero",
-      "target": "Hero (hero31)",
-      "key": "hero31",
+      "source": "Columns",
+      "target": "Columns (columns31)",
+      "key": "columns31",
       "instances": [
         {
           "url": "https://wknd-trendsetters.webflow.io/blog/fashion-trends-young-style",
